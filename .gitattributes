@@ -1,1 +1,11 @@
 * text=auto !eol
+nbproject/build-impl.xml -text
+nbproject/genfiles.properties -text
+nbproject/project.properties -text
+nbproject/project.xml -text
+src/prettify/CombinePrefixPattern.java -text
+src/prettify/JTextComponentRowHeader.java -text
+src/prettify/Job.java -text
+src/prettify/Prettify.java -text
+src/prettify/Util.java -text
+src/prettify/example.html -text
