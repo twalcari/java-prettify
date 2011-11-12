@@ -1,0 +1,24 @@
+`COM#!/usr/bin/python2.4`END`PLN
+
+`END`KWDdef`END`PLN fib`END`PUN():`END`PLN
+  `END`STR'''
+  a generator that produces the elements of the fibonacci series
+  '''`END`PLN
+
+  a `END`PUN=`END`PLN `END`LIT1`END`PLN
+  b `END`PUN=`END`PLN `END`LIT1`END`PLN
+  `END`KWDwhile`END`PLN `END`KWDTrue`END`PUN:`END`PLN
+    a`END`PUN,`END`PLN b `END`PUN=`END`PLN a `END`PUN+`END`PLN b`END`PUN,`END`PLN a
+    `END`KWDyield`END`PLN a
+
+`END`KWDdef`END`PLN nth`END`PUN(`END`PLNseries`END`PUN,`END`PLN n`END`PUN):`END`PLN
+  `END`STR'''
+  returns the nth element of a series,
+  consuming the earlier elements of the series
+  '''`END`PLN
+
+  `END`KWDfor`END`PLN x `END`KWDin`END`PLN series`END`PUN:`END`PLN
+    n `END`PUN=`END`PLN n `END`PUN-`END`PLN `END`LIT1`END`PLN
+    `END`KWDif`END`PLN n `END`PUN<=`END`PLN `END`LIT0`END`PUN:`END`PLN `END`KWDreturn`END`PLN x
+
+`END`KWDprint`END`PLN nth`END`PUN(`END`PLNfib`END`PUN(),`END`PLN `END`LIT10`END`PUN)`END

@@ -1,0 +1,47 @@
+class Animal
+  constructor: (@name) ->
+  move: (meters, loc) ->
+    alert @name + " moved " + meters + "m."
+  travel: (path...) ->
+    for place in path
+      @move place.distance, place.location
+
+class Horse extends Animal
+  ###
+  @param name Horse name
+  @param jumper Jumping ability
+  ###
+  constructor: (name, jumper) ->
+    super name
+    @capable = jumper
+  step: ->
+    alert '''
+          Step,
+          step...
+          '''
+  jump: ->
+    @capable
+  move: (meters, where) ->
+    switch where
+      when "ground"
+        @step()
+        super meters
+      when "hurdle"
+        super meters if @jump()
+
+# Create horse
+tom = new Horse "Tommy", yes
+
+street =
+  location: "ground"
+  distance: 12
+car =
+  location: "hurdle"
+  distance: 2
+
+###
+Tell him to travel:
+1. through the street
+2. over the car
+###
+tom.travel street, car

@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+/* the nth fibonacci number. */
+uint32 fib(unsigned int n) {
+  uint32 a = 1, b = 1;
+  uint32 tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+void main() {
+  size_t size = sizeof(wchar_t);
+  ASSERT_EQ(size, 1);
+  printf("%u", fib(10));
+}
+
+#define ZERO 0 /* a
+  multiline comment */

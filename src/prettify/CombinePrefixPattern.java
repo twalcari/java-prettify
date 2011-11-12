@@ -46,7 +46,7 @@ public class CombinePrefixPattern {
             Pattern regex = regexs.get(i);
             if ((regex.flags() & Pattern.CASE_INSENSITIVE) != 0) {
                 ignoreCase = true;
-            } else if (regex.pattern().replaceAll("(?i)\\\\u[0-9a-f]{4}|\\\\x[0-9a-f]{2}|\\\\[^ux]", "").matches("(?i)[a-z]")) {
+            } else if (Util.test(Pattern.compile("[a-z]", Pattern.CASE_INSENSITIVE), regex.pattern().replaceAll("\\\\[Uu][0-9A-Fa-f]{4}|\\\\[Xx][0-9A-Fa-f]{2}|\\\\[^UuXx]", ""))) {
                 needToFoldCase = true;
                 ignoreCase = false;
                 break;
@@ -121,7 +121,7 @@ public class CombinePrefixPattern {
 
         for (int i = inverse ? 1 : 0, n = charsetParts.length; i < n; ++i) {
             String p = charsetParts[i];
-            if (p.matches("(?i)\\\\[bdsw]")) {  // Don't muck with named groups.
+            if (Util.test(Pattern.compile("\\\\[bdsw]", Pattern.CASE_INSENSITIVE), p)) {  // Don't muck with named groups.
                 out.add(p);
             } else {
                 int start = decodeEscape(p);
@@ -158,26 +158,26 @@ public class CombinePrefixPattern {
             }
         });
         List<List<Integer>> consolidatedRanges = new ArrayList<List<Integer>>();
-        Map<Integer, Integer> lastRange = new HashMap<Integer, Integer>();
+//        List<Integer> lastRange = Arrays.asList(new Integer[]{0, 0});
+        List<Integer> lastRange = new ArrayList<Integer>(Arrays.asList(new Integer[]{0, 0}));
         for (int i = 0; i < ranges.size(); ++i) {
             List<Integer> range = ranges.get(i);
             if (lastRange.get(1) != null && range.get(0) <= lastRange.get(1) + 1) {
-                lastRange.put(1, Math.max(lastRange.get(1), range.get(1)));
+                lastRange.set(1, Math.max(lastRange.get(1), range.get(1)));
             } else {
-                consolidatedRanges.add(range);
-                lastRange.put(0, range.get(0));
-                lastRange.put(1, range.get(1));
+                // reference of lastRange is added
+                consolidatedRanges.add(lastRange = range);
             }
         }
 
         for (int i = 0; i < consolidatedRanges.size(); ++i) {
             List<Integer> range = consolidatedRanges.get(i);
-            out.add(encodeEscape((int) range.get(0)));
+            out.add(encodeEscape(range.get(0)));
             if (range.get(1) > range.get(0)) {
                 if (range.get(1) + 1 > range.get(0)) {
                     out.add("-");
                 }
-                out.add(encodeEscape((int) range.get(1)));
+                out.add(encodeEscape(range.get(1)));
             }
         }
         out.add("]");
@@ -267,16 +267,17 @@ public class CombinePrefixPattern {
         if ((regex.flags() & Pattern.CASE_INSENSITIVE) != 0 && needToFoldCase) {
             for (int i = 0; i < n; ++i) {
                 String p = parts[i];
-                char ch0 = p.charAt(0);
+                char ch0 = p.length() > 0 ? p.charAt(0) : 0;
                 if (p.length() >= 2 && ch0 == '[') {
                     parts[i] = caseFoldCharset(p);
-                } else if (ch0 == '\\') {
+                } else if (ch0 != '\\') {
                     // TODO: handle letters in numeric escapes.
                     StringBuffer sb = new StringBuffer();
                     Matcher _matcher = Pattern.compile("[a-zA-Z]").matcher(p);
                     while (_matcher.find()) {
                         int cc = _matcher.group(0).codePointAt(0);
-                        _matcher.appendReplacement(sb, "[" + Character.toString((char) (cc & ~32)) + Character.toString((char) (cc | 32)) + "]");
+                        _matcher.appendReplacement(sb, "");
+                        sb.append("[").append(Character.toString((char) (cc & ~32))).append(Character.toString((char) (cc | 32))).append("]");
                     }
                     _matcher.appendTail(sb);
                     parts[i] = sb.toString();

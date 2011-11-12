@@ -1,0 +1,22 @@
+`COM#include`END`PLN `END`STR<iostream>`END`PLN
+
+`END`KWDusing`END`PLN `END`KWDnamespace`END`PLN std`END`PUN;`END`PLN
+
+`END`COM//! fibonacci numbers with gratuitous use of templates.`END`PLN
+`END`COM//! \param n an index into the fibonacci series`END`PLN
+`END`COM//! \param fib0 element 0 of the series`END`PLN
+`END`COM//! \return the nth element of the fibonacci series`END`PLN
+`END`KWDtemplate`END`PLN `END`PUN<`END`KWDclass`END`PLN T`END`PUN>`END`PLN
+T fib`END`PUN(`END`TYPint`END`PLN n`END`PUN,`END`PLN `END`KWDconst`END`PLN T`END`PUN&`END`PLN fib0`END`PUN)`END`PLN `END`PUN{`END`PLN
+  T a`END`PUN(`END`PLNfib0`END`PUN),`END`PLN b`END`PUN(`END`PLNfib0`END`PUN);`END`PLN
+  `END`KWDwhile`END`PLN `END`PUN(--`END`PLNn `END`PUN>=`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END`PLN
+    T tmp`END`PUN(`END`PLNa`END`PUN);`END`PLN
+    a `END`PUN+=`END`PLN b`END`PUN;`END`PLN
+    b `END`PUN=`END`PLN tmp`END`PUN;`END`PLN
+  `END`PUN}`END`PLN
+  `END`KWDreturn`END`PLN a`END`PUN;`END`PLN
+`END`PUN}`END`PLN
+
+`END`TYPint`END`PLN main`END`PUN(`END`TYPint`END`PLN argc`END`PUN,`END`PLN `END`KWDchar`END`PLN `END`PUN**`END`PLNargv`END`PUN)`END`PLN `END`PUN{`END`PLN
+  cout `END`PUN<<`END`PLN fib`END`PUN(`END`LIT10`END`PUN,`END`PLN `END`LIT1U`END`PUN);`END`PLN
+`END`PUN}`END

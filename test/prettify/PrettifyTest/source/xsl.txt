@@ -1,0 +1,7 @@
+<!-- Test elements and attributes with namespaces -->
+
+<xsl:stylesheet xml:lang="en">
+  <xsl:template match=".">
+    <xsl:text>Hello World</xsl:text>
+  </xsl:template>
+</xsl:stylesheet>

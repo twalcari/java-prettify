@@ -1,0 +1,40 @@
+/foo/;  // a slash starting a line treated as a regexp beginning
+"foo".match(/fo+$/);
+// this line comment not treated as a regular expressions
+"foo /bar/".test(/"baz"/);  // test string and regexp boundaries
+var division = /\b\d+\/\d+/g;  // test char sets and escaping of specials
+var allSpecials = /([^\(\)\[\]\{\}\-\?\+\*\.\^\$\/]+)\\/;
+var slashInCharset = /[^/]/g, notCloseSq = /[^\]]/;
+
+// test that slash used in numeric context treated as an operator
+1 / 2;
+1. / x;
+x / y;
+(x) / y;
+1 /* foo */ / 2;
+1 /* foo *// 2;
+1/2;
+1./x;
+x/y;
+(x)/y;
+
+// test split over two lines.  line comment should not fool it
+1//
+/2;
+
+x++/y;
+x--/y;
+x[y] / z;
+f() / n;
+
+// test that slash after non postfix operator is start of regexp
+log('matches = ' + /foo/.test(foo));
+
+// test keyword preceders
+return /a regexp/;
+division = notreturn / not_a_regexp / 2;  // keyword suffix does not match
+
+// & not used as prefix operator in javascript but this should still work
+&/foo/;
+
+extends = /extends/;

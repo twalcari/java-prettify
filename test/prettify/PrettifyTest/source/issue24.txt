@@ -1,0 +1,51 @@
+os=require("os")
+math=require("math")
+
+-- Examples from the language reference
+     a = 'alo\n123"'
+     a = "alo\n123\""
+     a = '\97lo\10\04923"'
+     a = [[alo
+     123"]]
+     a = [==[
+     alo
+     123"]==]
+
+3   3.0   3.1416   314.16e-2   0.31416E1   0xff   0x56
+
+-- Some comments that demonstrate long brackets
+double_quoted = "Not a long bracket [=["
+--[=[ quoting out
+ [[ foo ]]
+ [==[does not end comment either]==]
+]=]
+past_end_of_comment
+--]=]
+
+-- Example code courtesy Joseph Harmbruster
+#
+do
+  local function ssgeneral(t, n, before)
+    for _, h in ipairs(incs) do
+      for i = h + 1, n do
+        local v = t[i]
+        for j = i - h, 1, -h do
+          local testval = t[j]
+          if not before(v, testval) then break end
+          t[i] = testval; i = j
+        end
+        t[i] = v
+      end 
+    end
+    return t
+  end
+
+  function shellsort(t, before, n)
+    n = n or #t
+    if not before or before == "<" then return ssup(t, n)
+    elseif before == ">" then return ssdown(t, n)
+    else return ssgeneral(t, n, before)
+    end
+  end
+  return shellsort
+end

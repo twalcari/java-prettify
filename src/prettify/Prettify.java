@@ -13,12 +13,12 @@
 // limitations under the License.
 package prettify;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -121,7 +121,7 @@ public class Prettify {
     /**
      * token style for a type
      */
-    public static final String PR_TYPE = "';";
+    public static final String PR_TYPE = "typ";
     /**
      * token style for a literal value.  e.g. 1, null, true.
      */
@@ -212,8 +212,10 @@ public class Prettify {
             shortcutStylePatterns = new ArrayList<List<Object>>();
             fallthroughStylePatterns = new ArrayList<List<Object>>();
             shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_PLAIN, Pattern.compile("^[\\s]+"), null, " \t\r\n"}));
-            shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_VALUE, Pattern.compile("^(?:\\\"[^\\\"]*\\\"?|\\'[^\\']*\\'?)"), null, " \t\r\n"}));
-            fallthroughStylePatterns.add(Arrays.asList(new Object[]{"lang-uq.val", Pattern.compile("^^<\\/?[a-z](?:[\\w.:-]*\\w)?|\\/?>$", Pattern.CASE_INSENSITIVE)}));
+            shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_VALUE, Pattern.compile("^(?:\\\"[^\\\"]*\\\"?|\\'[^\\']*\\'?)"), null, "\'"}));
+            fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_TAG, Pattern.compile("^^<\\/?[a-z](?:[\\w.:-]*\\w)?|\\/?>$", Pattern.CASE_INSENSITIVE)}));
+            fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_NAME, Pattern.compile("^(?!style[\\s=]|on)[a-z](?:[\\w:-]*\\w)?", Pattern.CASE_INSENSITIVE)}));
+            fallthroughStylePatterns.add(Arrays.asList(new Object[]{"lang-uq.val", Pattern.compile("^=\\s*([^>\\'\\\"\\s]*(?:[^>\\'\\\"\\s\\/]|\\/(?=\\s)))", Pattern.CASE_INSENSITIVE)}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_PUNCTUATION, Pattern.compile("^[=<>\\/]+")}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{"lang-js", Pattern.compile("^on\\w+\\s*=\\s*\\\"([^\\\"]+)\\\"", Pattern.CASE_INSENSITIVE)}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{"lang-js", Pattern.compile("^on\\w+\\s*=\\s*\\'([^\\']+)\\'", Pattern.CASE_INSENSITIVE)}));
@@ -379,7 +381,7 @@ public class Prettify {
             Map<String, Object> regexKeys = new HashMap<String, Object>();
             for (int i = 0, n = allPatterns.size(); i < n; ++i) {
                 List<Object> patternParts = allPatterns.get(i);
-                String shortcutChars = patternParts.size() > 4 ? (String) patternParts.get(3) : null;
+                String shortcutChars = patternParts.size() > 3 ? (String) patternParts.get(3) : null;
                 if (shortcutChars != null) {
                     for (int c = shortcutChars.length(); --c >= 0;) {
                         shortcuts.put(shortcutChars.charAt(c), patternParts);
@@ -495,7 +497,25 @@ public class Prettify {
                 }
             }
 
-            job.setDecorations(decorations);
+            List<Object> newDecorations = new ArrayList<Object>();
+
+            // use TreeMap to remove entrys with same pos
+            Map<Integer, String> posToStyleMap = new TreeMap<Integer, String>();
+            for (int i = 0, iEnd = decorations.size(); i < iEnd;) {
+                posToStyleMap.put((Integer) decorations.get(i++), (String) decorations.get(i++));
+            }
+            // remove adjacent style
+            String previousStyle = null;
+            for (Integer _pos : posToStyleMap.keySet()) {
+                if (previousStyle != null && previousStyle.equals(posToStyleMap.get(_pos))) {
+                    continue;
+                }
+                newDecorations.add(_pos);
+                newDecorations.add(posToStyleMap.get(_pos));
+                previousStyle = posToStyleMap.get(_pos);
+            }
+
+            job.setDecorations(newDecorations);
         }
     }
 
@@ -684,20 +704,10 @@ public class Prettify {
         if (!(extension != null && langHandlerRegistry.get(extension) != null)) {
             // Treat it as markup if the first non whitespace character is a < and
             // the last non-whitespace character is a >.
-            extension = source.matches("^\\s&<")
+            extension = Util.test(Pattern.compile("^\\s&<"), source)
                     ? "default-markup"
                     : "default-code";
         }
         return langHandlerRegistry.get(extension);
-    }
-
-    public static void main(String[] args) throws IOException {
-        Job job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(new String(Util.readResourceFile("/prettify/example.html")));
-        Prettify prettify = new Prettify();
-        prettify.langHandlerRegistry.get("html").decorate(job);
-        List<Object> decorations = job.getDecorations();
-        System.out.println(decorations);
     }
 }

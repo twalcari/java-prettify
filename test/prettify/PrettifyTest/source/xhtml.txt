@@ -1,0 +1,20 @@
+<xhtml>
+  <head>
+    <title>Fibonacci number</title>
+  </head>
+  <body onload="alert(fib(10))">
+    <script type="text/javascript"><![CDATA[
+function fib(n) {
+  var a = 1, b = 1;
+  var tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+]]>
+    </script>
+  </body>
+</xhtml>

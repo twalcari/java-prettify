@@ -1,0 +1,43 @@
+Imports System
+
+Class [class]
+    Shared Sub [shared](ByVal [boolean] As Boolean)
+        If [boolean] Then
+            Console.WriteLine("true")
+        Else
+            Console.WriteLine("false")
+        End If
+    End Sub
+End Class
+
+Module [module]
+    Sub Main()
+        [class].[shared](True)
+
+        ' This prints out: ".
+        Console.WriteLine("""")
+
+        ' This prints out: a"b.
+        Console.WriteLine("a""b")
+
+        ' This prints out: a.
+        Console.WriteLine("a"c)
+
+        ' This prints out: ".
+        Console.WriteLine(""""c)
+    End Sub
+End Module
+
+Dim d As Date
+d = # 8/23/1970 3:45:39AM #
+d = # 8/23/1970 #
+d = # 3:45:39AM #
+d = # 3:45:39 #
+d = # 13:45:39 #
+d = # 13:45:39PM #
+
+Dim n As Float
+n = (0.0, .99F, 1.0E-2D, 1.0E+3D, .5E4, 1E3R, 4D)
+
+Dim i As Integer
+i = (0, 123, 45L, &HA0I, &O177S)

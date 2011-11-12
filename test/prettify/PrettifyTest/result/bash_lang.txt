@@ -1,0 +1,17 @@
+`COM#!/bin/bash`END
+`PLN `END
+`COM# Fibonacci numbers`END
+`COM# Writes an infinite series to stdout, one entry per line`END
+`KWDfunction`END`PLN fib`END`PUN()`END`PLN `END`PUN{`END
+`PLN  `END`KWDlocal`END`PLN a`END`PUN=`END`LIT1`END
+`PLN  `END`KWDlocal`END`PLN b`END`PUN=`END`LIT1`END
+`PLN  `END`KWDwhile`END`PLN true `END`PUN;`END`PLN `END`KWDdo`END
+`PLN    echo $a`END
+`PLN    `END`KWDlocal`END`PLN tmp`END`PUN=`END`PLN$a`END
+`PLN    a`END`PUN=`END`PLN$`END`PUN((`END`PLN $a `END`PUN+`END`PLN $b `END`PUN))`END
+`PLN    b`END`PUN=`END`PLN$tmp`END
+`PLN  `END`KWDdone`END
+`PUN}`END
+`PLN `END
+`COM# output the 10th element of the series and halt`END
+`PLNfib `END`PUN|`END`PLN `END`PUN/`END`PLNusr`END`PUN/`END`PLNbin`END`PUN/*`END`PLNhead `END`PUN-`END`LIT10`END`PLN `END`PUN|`END`PLN tail `END`PUN-`END`LIT1`END

@@ -1,0 +1,26 @@
+#!/usr/bin/python2.4
+
+def fib():
+  '''
+  a generator that produces the fibonacci series's elements
+  '''
+
+  a = 1
+  b = 1
+  while True:
+    a, b = a + b, a
+    yield a
+
+def nth(series, n):
+  '''
+  returns the nth element of a series,
+  consuming the series' earlier elements.
+  '''
+
+  for x in series:
+    n -= 1
+    if n <= 0: return x
+
+print nth(fib(), 10)
+
+/* not a comment and not keywords: null char true */

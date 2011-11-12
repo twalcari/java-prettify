@@ -1,0 +1,17 @@
+`COM/**
+ * nth element in the fibonacci series.
+ * @param n >= 0
+ * @return the nth element, >= 0.
+ */`END`PLN
+`END`KWDfunction`END`PLN fib`END`PUN(`END`PLNn`END`PUN)`END`PLN `END`PUN{`END`PLN
+  `END`KWDvar`END`PLN a `END`PUN=`END`PLN `END`LIT1`END`PUN,`END`PLN b `END`PUN=`END`PLN `END`LIT1`END`PUN;`END`PLN
+  `END`KWDvar`END`PLN tmp`END`PUN;`END`PLN
+  `END`KWDwhile`END`PLN `END`PUN(--`END`PLNn `END`PUN>=`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END`PLN
+    tmp `END`PUN=`END`PLN a`END`PUN;`END`PLN
+    a `END`PUN+=`END`PLN b`END`PUN;`END`PLN
+    b `END`PUN=`END`PLN tmp`END`PUN;`END`PLN
+  `END`PUN}`END`PLN
+  `END`KWDreturn`END`PLN a`END`PUN;`END`PLN
+`END`PUN}`END`PLN
+
+document`END`PUN.`END`PLNwrite`END`PUN(`END`PLNfib`END`PUN(`END`LIT10`END`PUN));`END

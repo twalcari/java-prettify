@@ -1,0 +1,24 @@
+application: mirah-lang
+version: 1
+
+# Here's a comment
+handlers:
+  - url: /red/*
+     servlet: mysite.server.TeamServlet
+     init_params:
+       teamColor: red
+       bgColor: "#CC0000"
+     name: redteam
+  - url: /blue/*
+     servlet: mysite.server.TeamServlet
+     init_params:
+       teamColor: blue
+       bgColor: "#0000CC"
+     name: blueteam
+  - url: /register/*
+     jsp: /register/start.jsp
+  - url: *.special
+     filter: mysite.server.LogFilterImpl
+     init_params:
+       logType: special
+  

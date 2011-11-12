@@ -1,0 +1,19 @@
+<!--
+@charset('UTF-8');
+
+/** A url that is not quoted. */
+@import(url(/more-styles.css));
+
+HTML { content-before: 'hello\20'; content-after: 'w\6f rld';
+       -moz-spiff: inherit !important }
+
+/* Test units on numbers. */
+BODY { margin-bottom: 4px; margin-left: 3in; margin-bottom: 0; margin-top: 5% }
+
+/** Test number literals and quoted values. */
+TABLE.foo TR.bar A#visited { color: #001123; font-family: "monospace" }
+/** bolder is not a name, so should be plain.  !IMPORTANT is a keyword
+  * regardless of case.
+  */
+blink { text-decoration: BLINK !IMPORTANT; font-weight: bolder }
+-->

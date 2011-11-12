@@ -1,0 +1,2 @@
+<!-- There's an HTML comment in my comment -->
+<p>And another one inside the end tag</p>

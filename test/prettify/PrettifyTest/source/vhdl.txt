@@ -1,0 +1,36 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- A line comment
+entity foo_entity is
+
+  generic (-- comment after punc
+    a : natural := 42;
+    x : real := 16#ab.cd#-3
+  );
+  port (
+    clk_i : in  std_logic;
+    b_i   : in  natural range 0 to 100;
+    c_o   : out std_logic_vector(5 downto 0);
+    \a "name"\ : out integer  -- extended identifier
+  );
+
+end entity foo_entity;
+
+architecture foo_architecture of foo_entity is
+  signal bar_s : std_logic_vector(2 downto 0);
+begin
+  
+  bar_s <= b"101";
+
+  dummy_p : process (clk_i)
+  begin
+    if b_i = 1 then
+      c_o <= (others => '0');
+    elsif rising_edge(clk_i) then
+      c_o <= "1011" & bar_s(1 downto 0);
+    end if;
+  end process dummy_p;
+
+end architecture foo_architecture;
