@@ -48,7 +48,7 @@ public class JTextComponentRowHeader extends JPanel {
     protected final static boolean debug;
 
     static {
-        String debugMode = System.getProperty("SyntaxHighlighterDebugMode");
+        String debugMode = System.getProperty("PrettifyDebugMode");
         debug = debugMode == null || !debugMode.equals("true") ? false : true;
     }
     private static final long serialVersionUID = 1L;

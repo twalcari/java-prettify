@@ -13,15 +13,25 @@
 // limitations under the License.
 package prettify;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import prettify.lang.LangAppollo;
+import prettify.lang.LangClj;
+import prettify.lang.LangCss;
+import prettify.lang.LangGo;
+import prettify.lang.LangProto;
+import prettify.lang.LangScala;
+import prettify.lang.LangSql;
+import prettify.lang.LangVb;
+import prettify.lang.LangWiki;
+import prettify.lang.LangYaml;
 
 /**
  * @fileoverview
@@ -62,6 +72,15 @@ import java.util.regex.Pattern;
  */
 public class Prettify {
 
+    /**
+     * Indicate whether it is in debug mode or not.
+     */
+    protected final static boolean debug;
+
+    static {
+        String debugMode = System.getProperty("PrettifyDebugMode");
+        debug = debugMode == null || !debugMode.equals("true") ? false : true;
+    }
     // Keyword lists for various languages.
     public static final String FLOW_CONTROL_KEYWORDS = "break,continue,do,else,for,if,return,while";
     public static final String C_KEYWORDS = FLOW_CONTROL_KEYWORDS + "," + "auto,case,char,const,default,"
@@ -192,8 +211,10 @@ public class Prettify {
             decorateSourceMap.put("regexLiterals", true);
             registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"default-code"}));
 
-            List<List<Object>> shortcutStylePatterns = new ArrayList<List<Object>>();
-            List<List<Object>> fallthroughStylePatterns = new ArrayList<List<Object>>();
+            List<List<Object>> shortcutStylePatterns, fallthroughStylePatterns;
+
+            shortcutStylePatterns = new ArrayList<List<Object>>();
+            fallthroughStylePatterns = new ArrayList<List<Object>>();
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_PLAIN, Pattern.compile("^[^<?]+")}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_DECLARATION, Pattern.compile("^<!\\w[^>]*(?:>|$)")}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_COMMENT, Pattern.compile("^<\\!--[\\s\\S]*?(?:-\\->|$)")}));
@@ -300,6 +321,17 @@ public class Prettify {
             fallthroughStylePatterns = new ArrayList<List<Object>>();
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_STRING, Pattern.compile("^[\\s\\S]+")}));
             registerLangHandler(new CreateSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns), Arrays.asList(new String[]{"regex"}));
+
+            register(LangAppollo.class);
+            register(LangClj.class);
+            register(LangCss.class);
+            register(LangGo.class);
+            register(LangProto.class);
+            register(LangScala.class);
+            register(LangSql.class);
+            register(LangVb.class);
+            register(LangWiki.class);
+            register(LangYaml.class);
         } catch (Exception ex) {
             Logger.getLogger(Prettify.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -311,7 +343,7 @@ public class Prettify {
      * @param basePos the index of sourceCode within the chunk of source
      *    whose decorations are already present on out.
      */
-    public static void appendDecorations(int basePos, String sourceCode, CreateSimpleLexer langHandler, List<Object> out) {
+    protected static void appendDecorations(int basePos, String sourceCode, CreateSimpleLexer langHandler, List<Object> out) {
         if (sourceCode == null) {
             throw new NullPointerException("argument 'sourceCode' cannot be null");
         }
@@ -372,7 +404,7 @@ public class Prettify {
          * @param fallthroughStylePatterns patterns that will be tried in
          *   order if the shortcut ones fail.  May have shortcuts.
          */
-        public CreateSimpleLexer(List<List<Object>> shortcutStylePatterns, List<List<Object>> fallthroughStylePatterns) throws Exception {
+        protected CreateSimpleLexer(List<List<Object>> shortcutStylePatterns, List<List<Object>> fallthroughStylePatterns) throws Exception {
             this.fallthroughStylePatterns = fallthroughStylePatterns;
 
             List<List<Object>> allPatterns = new ArrayList<List<Object>>(shortcutStylePatterns);
@@ -497,25 +529,7 @@ public class Prettify {
                 }
             }
 
-            List<Object> newDecorations = new ArrayList<Object>();
-
-            // use TreeMap to remove entrys with same pos
-            Map<Integer, String> posToStyleMap = new TreeMap<Integer, String>();
-            for (int i = 0, iEnd = decorations.size(); i < iEnd;) {
-                posToStyleMap.put((Integer) decorations.get(i++), (String) decorations.get(i++));
-            }
-            // remove adjacent style
-            String previousStyle = null;
-            for (Integer _pos : posToStyleMap.keySet()) {
-                if (previousStyle != null && previousStyle.equals(posToStyleMap.get(_pos))) {
-                    continue;
-                }
-                newDecorations.add(_pos);
-                newDecorations.add(posToStyleMap.get(_pos));
-                previousStyle = posToStyleMap.get(_pos);
-            }
-
-            job.setDecorations(newDecorations);
+            job.setDecorations(Util.removeDuplicates(decorations));
         }
     }
 
@@ -534,7 +548,7 @@ public class Prettify {
      * @return a function that examines the source code
      *     in the input job and builds the decoration list.
      */
-    public CreateSimpleLexer sourceDecorator(Map<String, Object> options) throws Exception {
+    protected CreateSimpleLexer sourceDecorator(Map<String, Object> options) throws Exception {
         List<List<Object>> shortcutStylePatterns = new ArrayList<List<Object>>();
         List<List<Object>> fallthroughStylePatterns = new ArrayList<List<Object>>();
         if (options.get("tripleQuotedStrings") != null) {
@@ -634,7 +648,7 @@ public class Prettify {
         shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_PLAIN,
                     Pattern.compile("^\\s+"),
                     null,
-                    " \r\n\t\\xA0"
+                    " \r\n\t" + Character.toString((char) 0xA0)
                 }));
 
         // TODO(mikesamuel): recognize non-latin letters and numerals in idents
@@ -671,7 +685,7 @@ public class Prettify {
         return new CreateSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns);
     }
     /** Maps language-specific file extensions to handlers. */
-    protected Map<String, CreateSimpleLexer> langHandlerRegistry = new HashMap<String, CreateSimpleLexer>();
+    protected Map<String, Object> langHandlerRegistry = new HashMap<String, Object>();
 
     /** Register a language handler for the given file extensions.
      * @param handler a function from source code to a list
@@ -689,7 +703,7 @@ public class Prettify {
      *      } }
      * @param fileExtensions
      */
-    public void registerLangHandler(CreateSimpleLexer handler, List<String> fileExtensions) throws Exception {
+    protected void registerLangHandler(CreateSimpleLexer handler, List<String> fileExtensions) throws Exception {
         for (int i = fileExtensions.size(); --i >= 0;) {
             String ext = fileExtensions.get(i);
             if (langHandlerRegistry.get(ext) == null) {
@@ -700,6 +714,34 @@ public class Prettify {
         }
     }
 
+    /**
+     * Register language handler. The clazz will not be instantiated
+     * @param clazz the class of the language
+     * @throws Exception cannot instantiate the object using the class,
+     * or language handler with specified extension exist already
+     */
+    public void register(Class<? extends Lang> clazz) throws Exception {
+        if (clazz == null) {
+            throw new NullPointerException("argument 'clazz' cannot be null");
+        }
+        Method getExtensionsMethod = clazz.getMethod("getFileExtensions", (Class<?>[]) null);
+        List<String> fileExtensions = (List<String>) getExtensionsMethod.invoke(null, null);
+        for (int i = fileExtensions.size(); --i >= 0;) {
+            String ext = fileExtensions.get(i);
+            if (langHandlerRegistry.get(ext) == null) {
+                langHandlerRegistry.put(ext, clazz);
+            } else {
+                throw new Exception("cannot override language handler " + ext);
+            }
+        }
+    }
+
+    /**
+     * Get the parser for the extension specified. 
+     * @param extension the file extension, if null, default parser will be returned
+     * @param source the source code
+     * @return the parser
+     */
     public CreateSimpleLexer langHandlerForExtension(String extension, String source) {
         if (!(extension != null && langHandlerRegistry.get(extension) != null)) {
             // Treat it as markup if the first non whitespace character is a < and
@@ -708,6 +750,34 @@ public class Prettify {
                     ? "default-markup"
                     : "default-code";
         }
-        return langHandlerRegistry.get(extension);
+
+        Object handler = langHandlerRegistry.get(extension);
+        if (handler instanceof CreateSimpleLexer) {
+            return (CreateSimpleLexer) handler;
+        } else {
+            Lang _lang;
+            CreateSimpleLexer _simpleLexer;
+            try {
+                _lang = ((Class<Lang>) handler).newInstance();
+                _simpleLexer = new CreateSimpleLexer(_lang.getShortcutStylePatterns(), _lang.getFallthroughStylePatterns());
+
+                List<Lang> extendedLangs = _lang.getExtendedLangs();
+                for (Lang _extendedLang : extendedLangs) {
+                    register(_extendedLang.getClass());
+                }
+            } catch (Exception ex) {
+                if (debug) {
+                    Logger.getLogger(Prettify.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                return null;
+            }
+
+            List<String> fileExtensions = _lang.getFileExtensions();
+            for (String _extension : fileExtensions) {
+                langHandlerRegistry.put(_extension, _simpleLexer);
+            }
+
+            return _simpleLexer;
+        }
     }
 }

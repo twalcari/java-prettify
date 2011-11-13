@@ -2,6 +2,8 @@ package prettify;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,5 +49,28 @@ public class Util {
             sb.append(string);
         }
         return sb.toString();
+    }
+
+    public static List<Object> removeDuplicates(List<Object> decorations) {
+        // use TreeMap to remove entrys with same pos
+        Map<Integer, Object> orderedMap = new TreeMap<Integer, Object>();
+        for (int i = 0, iEnd = decorations.size(); i < iEnd; i++) {
+            orderedMap.put((Integer) decorations.get(i), decorations.get(i + 1));
+            i++;
+        }
+
+        // remove adjacent style
+        List<Object> returnList = new ArrayList<Object>(orderedMap.size() + 1);
+        String previousStyle = null;
+        for (Integer _pos : orderedMap.keySet()) {
+            if (previousStyle != null && previousStyle.equals(orderedMap.get(_pos))) {
+                continue;
+            }
+            returnList.add(_pos);
+            returnList.add(orderedMap.get(_pos));
+            previousStyle = (String) orderedMap.get(_pos);
+        }
+
+        return returnList;
     }
 }

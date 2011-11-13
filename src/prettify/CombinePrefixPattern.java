@@ -75,7 +75,7 @@ public class CombinePrefixPattern {
         escapeCharToCodeUnit.put('r', 0xf);
     }
 
-    public static int decodeEscape(String charsetPart) {
+    protected static int decodeEscape(String charsetPart) {
         Integer cc0 = charsetPart.codePointAt(0);
         if (cc0 != 92 /* \\ */) {
             return cc0;
@@ -93,7 +93,7 @@ public class CombinePrefixPattern {
         }
     }
 
-    public static String encodeEscape(int charCode) {
+    protected static String encodeEscape(int charCode) {
         if (charCode < 0x20) {
             return (charCode < 0x10 ? "\\x0" : "\\x") + Integer.toString(charCode, 16);
         }
@@ -103,7 +103,7 @@ public class CombinePrefixPattern {
                 ? "\\" + ch : ch;
     }
 
-    public static String caseFoldCharset(String charSet) {
+    protected static String caseFoldCharset(String charSet) {
         String[] charsetParts = Util.match(Pattern.compile("\\\\u[0-9A-Fa-f]{4}"
                 + "|\\\\x[0-9A-Fa-f]{2}"
                 + "|\\\\[0-3][0-7]{0,2}"
@@ -185,7 +185,7 @@ public class CombinePrefixPattern {
         return Util.join(out);
     }
 
-    public String allowAnywhereFoldCaseAndRenumberGroups(Pattern regex) {
+    protected String allowAnywhereFoldCaseAndRenumberGroups(Pattern regex) {
         // Split into character sets, escape sequences, punctuation strings
         // like ('(', '(?:', ')', '^'), and runs of characters that do not
         // include any of the above.

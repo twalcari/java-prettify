@@ -26,6 +26,11 @@ public class Job {
         decorations = new ArrayList<Object>();
     }
 
+    public Job(int basePos, String sourceCode) {
+        this.basePos = basePos;
+        this.sourceCode = sourceCode;
+    }
+
     public int getBasePos() {
         return basePos;
     }

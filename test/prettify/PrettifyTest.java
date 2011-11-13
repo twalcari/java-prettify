@@ -13,8 +13,6 @@
 // limitations under the License.
 package prettify;
 
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.ListIterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,116 +68,78 @@ public class PrettifyTest {
         List<Object> decorations, compare;
 
         source = new String(readFile(new File(packagePath + "source/bash.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/bash.txt"))));
         assertArrayEquals("bash", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/bash_lang.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension("sh", source).decorate(job);
+        prettify.langHandlerForExtension("sh", source).decorate(job = new Job(0, source));
         decorations = removeNewLine(job.getDecorations(), source);
         compare = readResult(new String(readFile(new File(packagePath + "result/bash_lang.txt"))), true);
         assertArrayEquals("bash_lang", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/java.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/java.txt"))));
         assertArrayEquals("java", decorations.toArray(), compare.toArray());
 
-
         source = new String(readFile(new File(packagePath + "source/java_lang.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension("java", source).decorate(job);
+        prettify.langHandlerForExtension("java", source).decorate(job = new Job(0, source));
         decorations = removeNewLine(job.getDecorations(), source);
         compare = readResult(new String(readFile(new File(packagePath + "result/java_lang.txt"))), true);
         assertArrayEquals("java_lang", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/C.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/C.txt"))));
         assertArrayEquals("C", decorations.toArray(), compare.toArray());
 
-
         source = new String(readFile(new File(packagePath + "source/C_lang.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension("c", source).decorate(job);
+        prettify.langHandlerForExtension("c", source).decorate(job = new Job(0, source));
         decorations = removeNewLine(job.getDecorations(), source);
         compare = readResult(new String(readFile(new File(packagePath + "result/C_lang.txt"))), true);
         assertArrayEquals("C_lang", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/Cpp.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/Cpp.txt"))));
         assertArrayEquals("Cpp", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/Cpp_lang.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension("cpp", source).decorate(job);
+        prettify.langHandlerForExtension("cpp", source).decorate(job = new Job(0, source));
         decorations = removeNewLine(job.getDecorations(), source);
         compare = readResult(new String(readFile(new File(packagePath + "result/Cpp_lang.txt"))), true);
         assertArrayEquals("Cpp_lang", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/javascript.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/javascript.txt"))));
         assertArrayEquals("javascript", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/perl.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/perl.txt"))));
         assertArrayEquals("perl", decorations.toArray(), compare.toArray());
 
-
         source = new String(readFile(new File(packagePath + "source/python.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension(null, source).decorate(job);
+        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
         decorations = job.getDecorations();
         compare = readResult(new String(readFile(new File(packagePath + "result/python.txt"))));
         assertArrayEquals("python", decorations.toArray(), compare.toArray());
 
         source = new String(readFile(new File(packagePath + "source/python_lang.txt")));
-        job = new Job();
-        job.setBasePos(0);
-        job.setSourceCode(source);
-        prettify.langHandlerForExtension("py", source).decorate(job);
+        prettify.langHandlerForExtension("py", source).decorate(job = new Job(0, source));
         decorations = removeNewLine(job.getDecorations(), source);
         compare = readResult(new String(readFile(new File(packagePath + "result/python_lang.txt"))), true);
         assertArrayEquals("python_lang", decorations.toArray(), compare.toArray());
 
+        // porting in progress
     }
 
     /**
@@ -241,25 +201,7 @@ public class PrettifyTest {
         }
 //        matcher.appendTail(sb);
 
-        // use TreeMap to remove entrys with same pos
-        Map<Integer, Object> orderedMap = new TreeMap<Integer, Object>();
-        for (int i = 0, iEnd = decorations.size(); i < iEnd; i++) {
-            orderedMap.put((Integer) decorations.get(i), decorations.get(i + 1));
-            i++;
-        }
-        // remove adjacent style
-        List<Object> returnList = new ArrayList<Object>(orderedMap.size() + 1);
-        String previousStyle = null;
-        for (Integer _pos : orderedMap.keySet()) {
-            if (previousStyle != null && previousStyle.equals(orderedMap.get(_pos))) {
-                continue;
-            }
-            returnList.add(_pos);
-            returnList.add(orderedMap.get(_pos));
-            previousStyle = (String) orderedMap.get(_pos);
-        }
-
-        return returnList;
+        return Util.removeDuplicates(decorations);
     }
 
     public static List<Object> readResult(String result) {
@@ -291,41 +233,25 @@ public class PrettifyTest {
             }
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer(); // for debug
         Pattern pattern = Pattern.compile("`([A-Z]{3})([^`]*?)`END", Pattern.MULTILINE | Pattern.DOTALL);
         Matcher matcher = pattern.matcher(result);
         while (matcher.find()) {
-            matcher.appendReplacement(sb, "");
-            sb.append(matcher.group(2));
+            matcher.appendReplacement(sb, ""); // for debug
+            sb.append(matcher.group(2)); // for debug
 
             returnList.add(count);
             returnList.add(matcher.group(1).toLowerCase());
             count += matcher.group(2).length();
         }
         matcher.appendTail(sb);
-        String plainCode = sb.toString();
+        String plainCode = sb.toString(); // for debug
 
         if (removeNewLine) {
-            // use TreeMap to remove entrys with same pos
-            Map<Integer, Object> orderedMap = new TreeMap<Integer, Object>();
-            for (int i = 0, iEnd = returnList.size(); i < iEnd; i++) {
-                orderedMap.put((Integer) returnList.get(i), returnList.get(i + 1));
-                i++;
-            }
-            // remove adjacent style
-            List<Object> _returnList = new ArrayList<Object>(orderedMap.size() + 1);
-            String previousStyle = null;
-            for (Integer _pos : orderedMap.keySet()) {
-                if (previousStyle != null && previousStyle.equals(orderedMap.get(_pos))) {
-                    continue;
-                }
-                _returnList.add(_pos);
-                _returnList.add(orderedMap.get(_pos));
-                previousStyle = (String) orderedMap.get(_pos);
-            }
-            returnList = _returnList;
+            returnList = Util.removeDuplicates(returnList);
         }
 
+        // for debug
 //        System.out.println(plainCode);
         for (int i = 0, iEnd = returnList.size(); i < iEnd; i++) {
             int end = i + 2 < iEnd ? (Integer) returnList.get(i + 2) : plainCode.length();
