@@ -15,19 +15,19 @@ public class ThemeDesert extends Theme {
         /* desert scheme ported from vim to google prettify */
 
         setFont(new Font("Consolas", Font.PLAIN, 12));
-        setBackground(Color.decode("0x000"));
+        setBackground(Color.decode("0x111111"));
 
-        setHighlightedBackground(Color.decode("0x111"));
+        setHighlightedBackground(Color.decode("0x444444"));
 
-        setGutterText(Color.decode("0xfff"));
-        setGutterBorderColor(Color.decode("0x111"));
+        setGutterText(Color.decode("0xffffff"));
+        setGutterBorderColor(Color.decode("0x888888"));
         setGutterBorderWidth(3);
         setGutterTextFont(new Font("Verdana", Font.PLAIN, 11));
         setGutterTextPaddingLeft(7);
         setGutterTextPaddingRight(7);
 
         Style plainStyle = new Style();
-        plainStyle.setColor(Color.decode("0xfff"));
+        plainStyle.setColor(Color.decode("0xffffff"));
         setPlain(plainStyle);
 
         Style style;
@@ -54,7 +54,7 @@ public class ThemeDesert extends Theme {
         setLiteral(style);
 
         style = new Style();
-        style.setColor(Color.decode("0xfff"));
+        style.setColor(Color.decode("0xffffff"));
         setPunctuation(style);
 
         style = new Style();
@@ -77,7 +77,7 @@ public class ThemeDesert extends Theme {
         setAttributeValue(style);
 
         style = new Style();
-        style.setColor(Color.decode("0x333"));
+        style.setColor(Color.decode("0x333333"));
         setNoCode(style);
 
         setOpenBracket(plainStyle);

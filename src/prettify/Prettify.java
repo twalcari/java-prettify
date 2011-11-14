@@ -233,7 +233,7 @@ public class Prettify {
             shortcutStylePatterns = new ArrayList<List<Object>>();
             fallthroughStylePatterns = new ArrayList<List<Object>>();
             shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_PLAIN, Pattern.compile("^[\\s]+"), null, " \t\r\n"}));
-            shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_VALUE, Pattern.compile("^(?:\\\"[^\\\"]*\\\"?|\\'[^\\']*\\'?)"), null, "\'"}));
+            shortcutStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_VALUE, Pattern.compile("^(?:\\\"[^\\\"]*\\\"?|\\'[^\\']*\\'?)"), null, "\"'"}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_TAG, Pattern.compile("^^<\\/?[a-z](?:[\\w.:-]*\\w)?|\\/?>$", Pattern.CASE_INSENSITIVE)}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_ATTRIB_NAME, Pattern.compile("^(?!style[\\s=]|on)[a-z](?:[\\w:-]*\\w)?", Pattern.CASE_INSENSITIVE)}));
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{"lang-uq.val", Pattern.compile("^=\\s*([^>\\'\\\"\\s]*(?:[^>\\'\\\"\\s\\/]|\\/(?=\\s)))", Pattern.CASE_INSENSITIVE)}));
@@ -510,7 +510,7 @@ public class Prettify {
                         // beginning which would cause us to infinitely recurse on the
                         // entire token, so we catch the right context in match[2].
                         embeddedSourceEnd = token.length() - match[2].length();
-                        embeddedSourceStart = embeddedSourceEnd = embeddedSource.length();
+                        embeddedSourceStart = embeddedSourceEnd - embeddedSource.length();
                     }
                     String lang = style.substring(5);
                     // Decorate the left of the embedded source
@@ -746,7 +746,7 @@ public class Prettify {
         if (!(extension != null && langHandlerRegistry.get(extension) != null)) {
             // Treat it as markup if the first non whitespace character is a < and
             // the last non-whitespace character is a >.
-            extension = Util.test(Pattern.compile("^\\s&<"), source)
+            extension = Util.test(Pattern.compile("^\\s*<"), source)
                     ? "default-markup"
                     : "default-code";
         }

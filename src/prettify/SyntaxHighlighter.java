@@ -24,7 +24,7 @@ public class SyntaxHighlighter extends JScrollPane {
 
     static {
         // set debug mode
-        System.setProperty("PrettifyDebugMode", "false");
+        System.setProperty("PrettifyDebugMode", "true");
     }
     private static final long serialVersionUID = 1L;
     /**
@@ -39,6 +39,10 @@ public class SyntaxHighlighter extends JScrollPane {
      * The theme.
      */
     protected Theme theme;
+    /**
+     * The Prettify object.
+     */
+    protected Prettify prettify;
     /**
      * The content of the syntax highlighter, null if there is no content so far.
      */
@@ -68,6 +72,7 @@ public class SyntaxHighlighter extends JScrollPane {
         }
 
         this.theme = theme;
+        prettify = new Prettify();
 
         setBorder(null);
 
@@ -86,17 +91,18 @@ public class SyntaxHighlighter extends JScrollPane {
      * This will re-parse the content and set the style.
      */
     protected void render() {
-//        if (content != null) {
-//            Parser parser = new Parser();
-//            // stop the change listener on the row header to speed up rendering
-//            highlighterRowHeader.setListenToDocumentUpdate(false);
-//            highlighter.setStyle(parser.parse(brush, htmlScript, content.toCharArray(), 0, content.length()));
-//            // resume the change listener on the row header
-//            highlighterRowHeader.setListenToDocumentUpdate(true);
-//            // notify the row header to update its information related to the SyntaxHighlighterPane
-//            // need to call this because we have stopped the change listener of the row header in previous code
-//            highlighterRowHeader.checkPanelSize();
-//        }
+        if (content != null) {
+            // stop the change listener on the row header to speed up rendering
+            highlighterRowHeader.setListenToDocumentUpdate(false);
+            Job job = new Job(0, content);
+            prettify.langHandlerForExtension(null, content).decorate(job);
+            highlighter.setStyle(job.getDecorations());
+            // resume the change listener on the row header
+            highlighterRowHeader.setListenToDocumentUpdate(true);
+            // notify the row header to update its information related to the SyntaxHighlighterPane
+            // need to call this because we have stopped the change listener of the row header in previous code
+            highlighterRowHeader.checkPanelSize();
+        }
     }
 
     /**

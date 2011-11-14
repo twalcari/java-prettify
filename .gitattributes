@@ -14,6 +14,9 @@ src/prettify/SyntaxHighlighter.java -text
 src/prettify/SyntaxHighlighterPane.java -text
 src/prettify/Theme.java -text
 src/prettify/Util.java -text
+src/prettify/example/Example.java -text
+src/prettify/example/example.html -text
+src/prettify/example/package-info.java -text
 src/prettify/lang/LangAppollo.java -text
 src/prettify/lang/LangClj.java -text
 src/prettify/lang/LangCss.java -text

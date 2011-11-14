@@ -19,9 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextPane;
@@ -83,9 +81,9 @@ public class SyntaxHighlighterPane extends JTextPane {
      */
     protected Theme theme;
     /**
-     * The style list. see {@link #setStyle(java.util.Map)}.
+     * The style list. see {@link #setStyle(java.util.List)}.
      */
-    protected Map<String, List<Object>> styleList;
+    protected List<Object> styleList;
     /**
      * Record the mouse cursor is currently pointing at which line of the document. -1 means not any line.
      * It is used internally.
@@ -319,13 +317,12 @@ public class SyntaxHighlighterPane extends JTextPane {
      * Apply the list of style to the script text pane.
      * @param styleList the style list
      */
-    public void setStyle(Map<String, List<Object>> styleList) {
+    public void setStyle(List<Object> styleList) {
         if (styleList == null) {
-            this.styleList = new HashMap<String, List<Object>>();
+            this.styleList = new ArrayList<Object>();
             return;
         }
-        // not a deep copy
-        this.styleList = new HashMap<String, List<Object>>(styleList);
+        this.styleList = new ArrayList<Object>(styleList);
 
         if (theme == null) {
             return;
@@ -335,15 +332,14 @@ public class SyntaxHighlighterPane extends JTextPane {
         // clear all the existing style
         document.setCharacterAttributes(0, document.getLength(), theme.getPlain().getAttributeSet(), true);
 
-//        // apply style according to the style list
-//        for (String key : styleList.keySet()) {
-//            List<Object> posList = styleList.get(key);
-//
-//            AttributeSet attributeSet = theme.getStyle(key).getAttributeSet();
-//            for (Object pos : posList) {
-//                document.setCharacterAttributes(pos.getOffset(), pos.getLength(), attributeSet, true);
-//            }
-//        }
+        Integer startPos = 0, endPos = 0;
+        // apply style according to the style list
+        for (int i = 0, iEnd = styleList.size(); i < iEnd; i += 2) {
+            SimpleAttributeSet attributeSet = theme.getStyle((String) styleList.get(i + 1)).getAttributeSet();
+            endPos = i + 2 < iEnd ? (Integer) styleList.get(i + 2) : document.getLength();
+            startPos = (Integer) styleList.get(i);
+            document.setCharacterAttributes(startPos, endPos - startPos, attributeSet, true);
+        }
 
         repaint();
     }

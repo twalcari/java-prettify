@@ -19,17 +19,17 @@ public class ThemeSunburst extends Theme {
         setFont(new Font("Consolas", Font.PLAIN, 12));
         setBackground(Color.black);
 
-        setHighlightedBackground(Color.decode("0xAEAEAE"));
+        setHighlightedBackground(Color.decode("0x444444"));
 
-        setGutterText(Color.decode("0xfff"));
-        setGutterBorderColor(Color.decode("0xAEAEAE"));
+        setGutterText(Color.decode("0xffffff"));
+        setGutterBorderColor(Color.decode("0x777777"));
         setGutterBorderWidth(3);
         setGutterTextFont(new Font("Verdana", Font.PLAIN, 11));
         setGutterTextPaddingLeft(7);
         setGutterTextPaddingRight(7);
 
         Style plainStyle = new Style();
-        plainStyle.setColor(Color.decode("0xfff"));
+        plainStyle.setColor(Color.decode("0xffffff"));
         setPlain(plainStyle);
 
         Style style;
@@ -56,7 +56,7 @@ public class ThemeSunburst extends Theme {
         setLiteral(style);
 
         style = new Style();
-        style.setColor(Color.decode("0xfff")); /* punctuation - white */
+        style.setColor(Color.decode("0xffffff")); /* punctuation - white */
         setPunctuation(style);
 
         style = new Style();

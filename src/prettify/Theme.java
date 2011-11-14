@@ -171,7 +171,7 @@ public class Theme {
             return type;
         } else if (key.equals("lit")) {
             return literal;
-        } else if (key.equals("pub")) {
+        } else if (key.equals("pun")) {
             return punctuation;
         } else if (key.equals("pln")) {
             return plain;

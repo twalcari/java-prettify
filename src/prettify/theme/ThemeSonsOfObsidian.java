@@ -21,12 +21,12 @@ public class ThemeSonsOfObsidian extends Theme {
          */
 
         setFont(new Font("Consolas", Font.PLAIN, 12));
-        setBackground(Color.white);
+        setBackground(Color.decode("0x000000"));
 
-        setHighlightedBackground(Color.decode("0x111"));
+        setHighlightedBackground(Color.decode("0x333333"));
 
-        setGutterText(Color.decode("0xF1F2F3"));
-        setGutterBorderColor(Color.decode("0x111"));
+        setGutterText(Color.decode("0x555555"));
+        setGutterBorderColor(Color.decode("0x666666"));
         setGutterBorderWidth(3);
         setGutterTextFont(new Font("Verdana", Font.PLAIN, 11));
         setGutterTextPaddingLeft(7);

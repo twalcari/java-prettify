@@ -18,6 +18,9 @@ public class Util {
         Matcher matcher = pattern.matcher(string);
         while (matcher.find()) {
             matchesList.add(matcher.group(0));
+            for (int i = 1, iEnd = matcher.groupCount(); i <= iEnd; i++) {
+                matchesList.add(matcher.group(i));
+            }
         }
 
         return matchesList.toArray(new String[matchesList.size()]);
