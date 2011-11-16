@@ -1,0 +1,2 @@
+`COM// ends with line comment token`END`PLN
+`END`COM//`END

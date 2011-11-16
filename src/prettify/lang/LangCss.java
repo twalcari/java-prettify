@@ -21,7 +21,6 @@ import prettify.Lang;
 import prettify.Prettify;
 
 /**
- * @fileoverview
  * Registers a language handler for CSS.
  *
  *
@@ -53,7 +52,7 @@ public class LangCss extends Lang {
         // A C style block comment.  The <comment> production.
         _fallthroughStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_COMMENT, Pattern.compile("^\\/\\*[^*]*\\*+(?:[^\\/*][^*]*\\*+)*\\/")}));
         // Escaping text spans
-        _fallthroughStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_COMMENT, Pattern.compile("^(?:<!--|-->)/")}));
+        _fallthroughStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_COMMENT, Pattern.compile("^(?:<!--|-->)")}));
         // A number possibly containing a suffix.
         _fallthroughStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_LITERAL, Pattern.compile("^(?:\\d+|\\d*\\.\\d+)(?:%|[a-z]+)?", Pattern.CASE_INSENSITIVE)}));
         // A hex color
@@ -69,7 +68,7 @@ public class LangCss extends Lang {
         setExtendedLangs(Arrays.asList(new Lang[]{new LangCssKeyword(), new LangCssString()}));
     }
 
-    public static List<String> getExtensions() {
+    public static List<String> getFileExtensions() {
         return Arrays.asList(new String[]{"css"});
     }
 
@@ -85,7 +84,7 @@ public class LangCss extends Lang {
             setFallthroughStylePatterns(_fallthroughStylePatterns);
         }
 
-        public static List<String> getExtensions() {
+        public static List<String> getFileExtensions() {
             return Arrays.asList(new String[]{"css-kw"});
         }
     }
@@ -102,7 +101,7 @@ public class LangCss extends Lang {
             setFallthroughStylePatterns(_fallthroughStylePatterns);
         }
 
-        public static List<String> getExtensions() {
+        public static List<String> getFileExtensions() {
             return Arrays.asList(new String[]{"css-str"});
         }
     }

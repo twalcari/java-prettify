@@ -1,0 +1,24 @@
+`KWDapplication: `END`PLNmirah`END`PUN-`END`PLNlang
+`END`KWDversion: `END`PLN1
+
+`END`COM# Here's a comment`END`PLN
+`END`KWDhandlers:
+`END`PLN  `END`PUN-`END`PLN `END`KWDurl: `END`PLN/red/*
+     `END`KWDservlet: `END`PLNmysite.server.TeamServlet
+     `END`KWDinit_params:
+`END`PLN       `END`KWDteamColor: `END`PLNred
+       `END`KWDbgColor: `END`STR"#CC0000"`END`PLN
+     `END`KWDname: `END`PLNredteam
+  `END`PUN-`END`PLN `END`KWDurl: `END`PLN/blue/*
+     `END`KWDservlet: `END`PLNmysite.server.TeamServlet
+     `END`KWDinit_params:
+`END`PLN       `END`KWDteamColor: `END`PLNblue
+       `END`KWDbgColor: `END`STR"#0000CC"`END`PLN
+     `END`KWDname: `END`PLNblueteam
+  `END`PUN-`END`PLN `END`KWDurl: `END`PLN/register/*
+     `END`KWDjsp: `END`PLN/register/start.jsp
+  `END`PUN-`END`PLN `END`KWDurl: `END`PLN*.special
+     `END`KWDfilter: `END`PLNmysite.server.LogFilterImpl
+     `END`KWDinit_params:
+`END`PLN       `END`KWDlogType: `END`PLNspecial
+  `END

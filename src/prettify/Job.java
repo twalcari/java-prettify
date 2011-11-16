@@ -16,6 +16,10 @@ package prettify;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the job object that similar to those in JavaScript Prettify.
+ * @author Chan Wai Shing <cws1989@gmail.com>
+ */
 public class Job {
 
     protected int basePos;

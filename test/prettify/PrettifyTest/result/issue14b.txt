@@ -1,0 +1,2 @@
+`COM&lt;!-- There's an `END`COMHTML`END`COM comment in my comment --&gt;`END`PLN
+`END`TAG&lt;p&gt;`END`PLNAnd another one inside the end tag`END`TAG&lt;/p`END`TAG&gt;`END

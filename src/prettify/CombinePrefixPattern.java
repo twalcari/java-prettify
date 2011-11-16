@@ -23,6 +23,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This is similar to the combinePrefixPattern.js in JavaScript Prettify.
+ * @author Chan Wai Shing <cws1989@gmail.com>
+ */
 public class CombinePrefixPattern {
 
     protected int capturedGroupIndex = 0;
@@ -110,7 +114,7 @@ public class CombinePrefixPattern {
                 + "|\\\\[0-7]{1,2}"
                 + "|\\\\[\\s\\S]"
                 + "|-"
-                + "|[^-\\\\]"), charSet.substring(1, charSet.length() - 1));
+                + "|[^-\\\\]"), charSet.substring(1, charSet.length() - 1), true);
         List<List<Integer>> ranges = new ArrayList<List<Integer>>();
         boolean inverse = charsetParts[0] != null && charsetParts[0].equals("^");
 
@@ -198,7 +202,7 @@ public class CombinePrefixPattern {
                 + "|\\(\\?[:!=]" // start of a non-capturing group
                 + "|[\\(\\)\\^]" // start/end of a group, or line start
                 + "|[^\\x5B\\x5C\\(\\)\\^]+" // run of other characters
-                + ")"), regex.pattern());
+                + ")"), regex.pattern(), true);
         int n = parts.length;
 
         // Maps captured group numbers to the number they will occupy in

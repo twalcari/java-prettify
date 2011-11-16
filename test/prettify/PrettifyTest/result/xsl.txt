@@ -1,0 +1,7 @@
+`COM&lt;!-- Test elements and attributes with namespaces --&gt;`END`PLN
+
+`END`TAG&lt;xsl:stylesheet`END`PLN `END`ATNxml:lang`END`PUN=`END`ATV"en"`END`TAG&gt;`END`PLN
+  `END`TAG&lt;xsl:template`END`PLN `END`ATNmatch`END`PUN=`END`ATV"."`END`TAG&gt;`END`PLN
+    `END`TAG&lt;xsl:text&gt;`END`PLNHello World`END`TAG&lt;/xsl:text&gt;`END`PLN
+  `END`TAG&lt;/xsl:template&gt;`END`PLN
+`END`TAG&lt;/xsl:stylesheet&gt;`END

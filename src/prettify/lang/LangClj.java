@@ -23,7 +23,6 @@ import prettify.Lang;
 import prettify.Prettify;
 
 /**
- * @fileoverview
  * Registers a language handler for Clojure.
  *
  *
@@ -73,7 +72,7 @@ public class LangClj extends Lang {
         setFallthroughStylePatterns(_fallthroughStylePatterns);
     }
 
-    public static List<String> getExtensions() {
+    public static List<String> getFileExtensions() {
         return Arrays.asList(new String[]{"clj"});
     }
 }

@@ -26,15 +26,21 @@ import prettify.lang.LangAppollo;
 import prettify.lang.LangClj;
 import prettify.lang.LangCss;
 import prettify.lang.LangGo;
-import prettify.lang.LangProto;
+import prettify.lang.LangHs;
+import prettify.lang.LangLisp;
+import prettify.lang.LangLua;
+import prettify.lang.LangMl;
+import prettify.lang.LangN;
 import prettify.lang.LangScala;
 import prettify.lang.LangSql;
+import prettify.lang.LangTex;
 import prettify.lang.LangVb;
+import prettify.lang.LangVhdl;
 import prettify.lang.LangWiki;
+import prettify.lang.LangXq;
 import prettify.lang.LangYaml;
 
 /**
- * @fileoverview
  * some functions for browser-side pretty printing of code contained in html.
  *
  * <p>
@@ -322,18 +328,45 @@ public class Prettify {
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_STRING, Pattern.compile("^[\\s\\S]+")}));
             registerLangHandler(new CreateSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns), Arrays.asList(new String[]{"regex"}));
 
+            /**
+             * Registers a language handler for Protocol Buffers as described at
+             * http://code.google.com/p/protobuf/.
+             *
+             * Based on the lexical grammar at
+             * http://research.microsoft.com/fsharp/manual/spec2.aspx#_Toc202383715
+             *
+             * @author mikesamuel@gmail.com
+             */
+            decorateSourceMap = new HashMap<String, Object>();
+            decorateSourceMap.put("keywords", "bytes,default,double,enum,extend,extensions,false,"
+                    + "group,import,max,message,option,"
+                    + "optional,package,repeated,required,returns,rpc,service,"
+                    + "syntax,to,true");
+            decorateSourceMap.put("types", Pattern.compile("^(bool|(double|s?fixed|[su]?int)(32|64)|float|string)\\b"));
+            decorateSourceMap.put("cStyleComments", true);
+            registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"proto"}));
+
             register(LangAppollo.class);
             register(LangClj.class);
             register(LangCss.class);
             register(LangGo.class);
-            register(LangProto.class);
+            register(LangHs.class);
+            register(LangLisp.class);
+            register(LangLua.class);
+            register(LangMl.class);
+            register(LangN.class);
             register(LangScala.class);
             register(LangSql.class);
+            register(LangTex.class);
             register(LangVb.class);
+            register(LangVhdl.class);
             register(LangWiki.class);
+            register(LangXq.class);
             register(LangYaml.class);
         } catch (Exception ex) {
-            Logger.getLogger(Prettify.class.getName()).log(Level.SEVERE, null, ex);
+            if (debug) {
+                Logger.getLogger(Prettify.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -453,7 +486,7 @@ public class Prettify {
              */
             List<Object> decorations = new ArrayList<Object>(Arrays.asList(new Object[]{basePos, PR_PLAIN}));
             int pos = 0;  // index into sourceCode
-            String[] tokens = Util.match(tokenizer, sourceCode);
+            String[] tokens = Util.match(tokenizer, sourceCode, true);
             Map<String, String> styleCache = new HashMap<String, String>();
 
             for (int ti = 0, nTokens = tokens.length; ti < nTokens; ++ti) {
@@ -467,12 +500,12 @@ public class Prettify {
                 } else {
                     List<Object> patternParts = shortcuts.get(token.charAt(0));
                     if (patternParts != null) {
-                        match = Util.match((Pattern) patternParts.get(1), token);
+                        match = Util.match((Pattern) patternParts.get(1), token, false);
                         style = (String) patternParts.get(0);
                     } else {
                         for (int i = 0; i < nPatterns; ++i) {
                             patternParts = fallthroughStylePatterns.get(i);
-                            match = Util.match((Pattern) patternParts.get(1), token);
+                            match = Util.match((Pattern) patternParts.get(1), token, false);
                             if (match.length != 0) {
                                 style = (String) patternParts.get(0);
                                 break;
@@ -485,7 +518,7 @@ public class Prettify {
                     }
 
                     isEmbedded = style != null && style.length() >= 5 && style.startsWith("lang-");
-                    if (isEmbedded && !(match.length > 1)) {
+                    if (isEmbedded && !(match.length > 1 && match[1] != null)) {
                         isEmbedded = false;
                         style = PR_SOURCE;
                     }
@@ -505,7 +538,7 @@ public class Prettify {
                     String embeddedSource = match[1];
                     int embeddedSourceStart = token.indexOf(embeddedSource);
                     int embeddedSourceEnd = embeddedSourceStart + embeddedSource.length();
-                    if (match.length > 2) {
+                    if (match.length > 2 && match[2] != null) {
                         // If embeddedSource can be blank, then it would match at the
                         // beginning which would cause us to infinitely recurse on the
                         // entire token, so we catch the right context in match[2].
@@ -529,7 +562,7 @@ public class Prettify {
                 }
             }
 
-            job.setDecorations(Util.removeDuplicates(decorations));
+            job.setDecorations(Util.removeDuplicates(decorations, job.getSourceCode()));
         }
     }
 
@@ -570,7 +603,7 @@ public class Prettify {
                         null,
                         "\"'"}));
         }
-        if (options.get("verbatinStrings") != null) {
+        if (options.get("verbatimStrings") != null) {
             // verbatim-string-literal production from the C# grammar.  See issue 93.
             fallthroughStylePatterns.add(Arrays.asList(new Object[]{PR_STRING,
                         Pattern.compile("^@\\\"(?:[^\\\"]|\\\"\\\")*(?:\\\"|$)"),
@@ -724,8 +757,7 @@ public class Prettify {
         if (clazz == null) {
             throw new NullPointerException("argument 'clazz' cannot be null");
         }
-        Method getExtensionsMethod = clazz.getMethod("getFileExtensions", (Class<?>[]) null);
-        List<String> fileExtensions = (List<String>) getExtensionsMethod.invoke(null, null);
+        List<String> fileExtensions = getFileExtensionsFromClass(clazz);
         for (int i = fileExtensions.size(); --i >= 0;) {
             String ext = fileExtensions.get(i);
             if (langHandlerRegistry.get(ext) == null) {
@@ -734,6 +766,11 @@ public class Prettify {
                 throw new Exception("cannot override language handler " + ext);
             }
         }
+    }
+
+    protected List<String> getFileExtensionsFromClass(Class<? extends Lang> clazz) throws Exception {
+        Method getExtensionsMethod = clazz.getMethod("getFileExtensions", (Class<?>[]) null);
+        return (List<String>) getExtensionsMethod.invoke(null, null);
     }
 
     /**
@@ -755,26 +792,25 @@ public class Prettify {
         if (handler instanceof CreateSimpleLexer) {
             return (CreateSimpleLexer) handler;
         } else {
-            Lang _lang;
             CreateSimpleLexer _simpleLexer;
             try {
-                _lang = ((Class<Lang>) handler).newInstance();
+                Lang _lang = ((Class<Lang>) handler).newInstance();
                 _simpleLexer = new CreateSimpleLexer(_lang.getShortcutStylePatterns(), _lang.getFallthroughStylePatterns());
 
                 List<Lang> extendedLangs = _lang.getExtendedLangs();
                 for (Lang _extendedLang : extendedLangs) {
                     register(_extendedLang.getClass());
                 }
+
+                List<String> fileExtensions = getFileExtensionsFromClass((Class<Lang>) handler);
+                for (String _extension : fileExtensions) {
+                    langHandlerRegistry.put(_extension, _simpleLexer);
+                }
             } catch (Exception ex) {
                 if (debug) {
                     Logger.getLogger(Prettify.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 return null;
-            }
-
-            List<String> fileExtensions = _lang.getFileExtensions();
-            for (String _extension : fileExtensions) {
-                langHandlerRegistry.put(_extension, _simpleLexer);
             }
 
             return _simpleLexer;

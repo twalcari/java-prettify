@@ -21,7 +21,6 @@ import prettify.Lang;
 import prettify.Prettify;
 
 /**
- * @fileoverview
  * Registers a language handler for the AGC/AEA Assembly Language as described
  * at http://virtualagc.googlecode.com
  * <p>
@@ -57,7 +56,7 @@ public class LangAppollo extends Lang {
         setFallthroughStylePatterns(_fallthroughStylePatterns);
     }
 
-    public static List<String> getExtensions() {
+    public static List<String> getFileExtensions() {
         return Arrays.asList(new String[]{"apollo", "agc", "aea"});
     }
 }

@@ -21,7 +21,6 @@ import prettify.Lang;
 import prettify.Prettify;
 
 /**
- * @fileoverview
  * Registers a language handler for various flavors of basic.
  *
  *
@@ -42,7 +41,7 @@ public class LangVb extends Lang {
         List<List<Object>> _fallthroughStylePatterns = new ArrayList<List<Object>>();
 
         // Whitespace
-        _shortcutStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_COMMENT, Pattern.compile("^[\\t\\n\\r \\xA0\\u2028\\u2029]+"), null, "\t\n\r " + Character.toString((char) 0xA0) + "\u2028\u2029"}));
+        _shortcutStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_PLAIN, Pattern.compile("^[\\t\\n\\r \\xA0\\u2028\\u2029]+"), null, "\t\n\r " + Character.toString((char) 0xA0) + "\u2028\u2029"}));
         // A double quoted string with quotes escaped by doubling them.
         // A single character can be suffixed with C.
         _shortcutStylePatterns.add(Arrays.asList(new Object[]{Prettify.PR_STRING, Pattern.compile("^(?:[\\\"\\u201C\\u201D](?:[^\\\"\\u201C\\u201D]|[\\\"\\u201C\\u201D]{2})(?:[\\\"\\u201C\\u201D]c|$)|[\\\"\\u201C\\u201D](?:[^\\\"\\u201C\\u201D]|[\\\"\\u201C\\u201D]{2})*(?:[\\\"\\u201C\\u201D]|$))", Pattern.CASE_INSENSITIVE), null, "\"\u201C\u201D"}));
@@ -64,7 +63,7 @@ public class LangVb extends Lang {
         setFallthroughStylePatterns(_fallthroughStylePatterns);
     }
 
-    public static List<String> getExtensions() {
+    public static List<String> getFileExtensions() {
         return Arrays.asList(new String[]{"vb", "vbs"});
     }
 }

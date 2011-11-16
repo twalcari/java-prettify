@@ -30,7 +30,12 @@ import static org.junit.Assert.*;
 
 public class PrettifyTest {
 
+    static {
+        // set debug mode
+        System.setProperty("PrettifyDebugMode", "true");
+    }
     protected final String packagePath = "test/" + this.getClass().getCanonicalName().replace('.', '/') + "/";
+    protected Prettify prettify;
 
     public PrettifyTest() {
     }
@@ -52,94 +57,75 @@ public class PrettifyTest {
 
     @Before
     public void setUp() {
+        prettify = new Prettify();
     }
 
     @After
     public void tearDown() {
     }
 
+    public void test(String extension, String code, boolean removeNewLine) throws IOException {
+        String source = new String(readFile(new File(packagePath + "source/" + code + ".txt")), "UTF-8");
+        Job job = new Job(0, source);
+        prettify.langHandlerForExtension(extension, source).decorate(job);
+        List<Object> decorations = removeNewLine ? removeNewLine(job.getDecorations(), source) : job.getDecorations();
+        List<Object> compare = readResult(new String(readFile(new File(packagePath + "result/" + code + ".txt")), "UTF-8").replace("&lt;", "<").replace("&gt;", ">").replace("&nbsp;", " ").replace("&amp;", "&"), removeNewLine);
+        assertArrayEquals(code + "\n" + compare + "\n" + decorations, compare.toArray(), decorations.toArray());
+    }
+
     @Test
-    public void test() throws IOException {
-        System.out.println("+++++ test +++++");
+    public void testBatch() throws IOException {
+        System.out.println("+++++ testBatch +++++");
 
-        Prettify prettify = new Prettify();
-        Job job;
-        String source;
-        List<Object> decorations, compare;
+        test(null, "bash", false);
+        test("sh", "bash_lang", true);
+        test(null, "java", false);
+        test("java", "java_lang", true);
+        test(null, "C", false);
+        test("c", "C_lang", false);
+        test(null, "Cpp", false);
+        test("cpp", "Cpp_lang", false);
+        test(null, "javascript", false);
+        test(null, "perl", false);
+        test(null, "python", false);
+        test("py", "python_lang", false);
+        test(null, "PHP", false);
+        test("coffee", "coffee", false);
+        test("css", "css", false);
+        test("go", "go", false);
+        test(null, "html", false);
+        test(null, "htmlXmp", false);
+        test("html", "html_lang", false);
+        test(null, "issue12", false);
+        test("js", "issue12_lang", false);
+        test(null, "issue14a", false);
+        test(null, "issue14b", false);
+        test(null, "issue20", false);
+        test(null, "issue21", false);
+        test("lua", "issue24", false);
+        test("vb", "issue27", false);
+        test("hs", "issue30", false);
+        test("ml", "issue33", false);
+        test(null, "issue4", false);
+        test("el", "issue42", false);
+        test(null, "issue45", false);
+        test(null, "issue8", false);
+        test("java", "issue84", false);
+        test(null, "issue92", false);
+        test("cs", "issue93", false);
+        test(null, "misc1", false);
+        test("proto", "proto", false);
+        test("scala", "scala", false);
+        test("vhdl", "vhdl", false);
+        test("wiki", "wiki", false);
+        test(null, "xhtml", false);
+        test(null, "xml", false);
+        test(null, "xsl", false);
+        test("yaml", "yaml1", false);
+        test("yaml", "yaml2", false);
 
-        source = new String(readFile(new File(packagePath + "source/bash.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/bash.txt"))));
-        assertArrayEquals("bash", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/bash_lang.txt")));
-        prettify.langHandlerForExtension("sh", source).decorate(job = new Job(0, source));
-        decorations = removeNewLine(job.getDecorations(), source);
-        compare = readResult(new String(readFile(new File(packagePath + "result/bash_lang.txt"))), true);
-        assertArrayEquals("bash_lang", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/java.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/java.txt"))));
-        assertArrayEquals("java", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/java_lang.txt")));
-        prettify.langHandlerForExtension("java", source).decorate(job = new Job(0, source));
-        decorations = removeNewLine(job.getDecorations(), source);
-        compare = readResult(new String(readFile(new File(packagePath + "result/java_lang.txt"))), true);
-        assertArrayEquals("java_lang", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/C.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/C.txt"))));
-        assertArrayEquals("C", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/C_lang.txt")));
-        prettify.langHandlerForExtension("c", source).decorate(job = new Job(0, source));
-        decorations = removeNewLine(job.getDecorations(), source);
-        compare = readResult(new String(readFile(new File(packagePath + "result/C_lang.txt"))), true);
-        assertArrayEquals("C_lang", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/Cpp.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/Cpp.txt"))));
-        assertArrayEquals("Cpp", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/Cpp_lang.txt")));
-        prettify.langHandlerForExtension("cpp", source).decorate(job = new Job(0, source));
-        decorations = removeNewLine(job.getDecorations(), source);
-        compare = readResult(new String(readFile(new File(packagePath + "result/Cpp_lang.txt"))), true);
-        assertArrayEquals("Cpp_lang", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/javascript.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/javascript.txt"))));
-        assertArrayEquals("javascript", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/perl.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/perl.txt"))));
-        assertArrayEquals("perl", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/python.txt")));
-        prettify.langHandlerForExtension(null, source).decorate(job = new Job(0, source));
-        decorations = job.getDecorations();
-        compare = readResult(new String(readFile(new File(packagePath + "result/python.txt"))));
-        assertArrayEquals("python", decorations.toArray(), compare.toArray());
-
-        source = new String(readFile(new File(packagePath + "source/python_lang.txt")));
-        prettify.langHandlerForExtension("py", source).decorate(job = new Job(0, source));
-        decorations = removeNewLine(job.getDecorations(), source);
-        compare = readResult(new String(readFile(new File(packagePath + "result/python_lang.txt"))), true);
-        assertArrayEquals("python_lang", decorations.toArray(), compare.toArray());
-
-        // porting in progress
+        // only source but no result is provided from JavaScript Prettify
+//        test(null, "issue79", false);
     }
 
     /**
@@ -201,7 +187,7 @@ public class PrettifyTest {
         }
 //        matcher.appendTail(sb);
 
-        return Util.removeDuplicates(decorations);
+        return Util.removeDuplicates(decorations, source);
     }
 
     public static List<Object> readResult(String result) {
@@ -214,27 +200,22 @@ public class PrettifyTest {
         int count = 0;
 
         if (removeNewLine) {
-            while (true) {
-                StringBuffer sb = new StringBuffer();
-                result = result.replaceAll("[\r\n]", "");
-                Pattern pattern = Pattern.compile("(`[A-Z]{3})([^`]+?)`END\\1([^`]+?)`END", Pattern.MULTILINE | Pattern.DOTALL);
-                Matcher matcher = pattern.matcher(result);
-                boolean found = false;
-                while (matcher.find()) {
-                    matcher.appendReplacement(sb, "");
-                    sb.append(matcher.group(1)).append(matcher.group(2)).append(matcher.group(3)).append("`END");
-                    found = true;
-                }
-                matcher.appendTail(sb);
-                result = sb.toString();
-                if (!found) {
-                    break;
-                }
+            StringBuffer sb = new StringBuffer();
+            result = result.replaceAll("[\r\n]", "");
+            Pattern pattern = Pattern.compile("(`[A-Z]{3})([^`]+?)`END\\1([^`]+?)`END", Pattern.MULTILINE | Pattern.DOTALL);
+            Matcher matcher = pattern.matcher(result);
+            boolean found = false;
+            while (matcher.find()) {
+                matcher.appendReplacement(sb, "");
+                sb.append(matcher.group(1)).append(matcher.group(2)).append(matcher.group(3)).append("`END");
+                found = true;
             }
+            matcher.appendTail(sb);
+            result = sb.toString();
         }
 
         StringBuffer sb = new StringBuffer(); // for debug
-        Pattern pattern = Pattern.compile("`([A-Z]{3})([^`]*?)`END", Pattern.MULTILINE | Pattern.DOTALL);
+        Pattern pattern = Pattern.compile("`([A-Z]{3})(.+?)`END", Pattern.MULTILINE | Pattern.DOTALL);
         Matcher matcher = pattern.matcher(result);
         while (matcher.find()) {
             matcher.appendReplacement(sb, ""); // for debug
@@ -247,17 +228,15 @@ public class PrettifyTest {
         matcher.appendTail(sb);
         String plainCode = sb.toString(); // for debug
 
-        if (removeNewLine) {
-            returnList = Util.removeDuplicates(returnList);
-        }
+        returnList = Util.removeDuplicates(returnList, result);
 
         // for debug
 //        System.out.println(plainCode);
-        for (int i = 0, iEnd = returnList.size(); i < iEnd; i++) {
-            int end = i + 2 < iEnd ? (Integer) returnList.get(i + 2) : plainCode.length();
+//        for (int i = 0, iEnd = returnList.size(); i < iEnd; i++) {
+//            int end = i + 2 < iEnd ? (Integer) returnList.get(i + 2) : plainCode.length();
 //            System.out.println(returnList.get(i) + ": " + returnList.get(i + 1) + ": " + plainCode.substring((Integer) returnList.get(i), end));
-            i++;
-        }
+//            i++;
+//        }
 
         return returnList;
     }

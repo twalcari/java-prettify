@@ -1,0 +1,3 @@
+`KWDthrow`END`PLN `END`KWDnew`END`PLN `END`TYPRuntimeException`END`PUN(`END`STR"Element ["`END`PLN `END`PUN+`END`PLN element`END`PUN.`END`PLNgetName`END`PUN()`END`PLN `END`PUN+`END`PLN 
+  `END`STR"] missing attribute."`END`PUN);`END`PLN
+variable`END`PUN++;`END

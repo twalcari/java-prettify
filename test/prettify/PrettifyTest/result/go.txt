@@ -1,0 +1,11 @@
+`PLNpackage main  `END`COM/* Package of which this program is part. */`END`PLN
+
+import fmt "fmt"  `END`COM// Package implementing formatted I/O.`END`PLN
+
+
+func main() {
+    fmt.Printf("Hello, world; or Καλημέρα κόσμε; or こんにちは 世界\n")  `END`COM// Semicolon inserted here`END`PLN
+}
+
+`END`COM/* " */`END`PLN  "foo /* "  `END`COM/*/  */`END`PLN
+`END`COM/* ` */`END`PLN  `foo /* `  `END`COM/*/  */`END

@@ -1,12 +1,16 @@
-/**
- * This is part of the Java SyntaxHighlighter.
- * 
- * It is distributed under MIT license. See the file 'readme.txt' for
- * information on usage and redistribution of this file, and for a
- * DISCLAIMER OF ALL WARRANTIES.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
- */
+// Copyright (C) 2011 Chan Wai Shing
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 package prettify.example;
 
 import java.io.ByteArrayOutputStream;
@@ -81,13 +85,13 @@ public class Example {
                     long start, end;
                     start = System.currentTimeMillis();
 
-                    // use XML (for HTML) brush and RDark theme
+                    // use Default theme
                     SyntaxHighlighter highlighter = new SyntaxHighlighter(new ThemeDefault());
                     // set the line number count from 10 instead of 1
                     highlighter.setFirstLine(10);
                     // set to highlight line 13, 27, 28, 38, 42, 43 and 53
                     highlighter.setHighlightedLineList(Arrays.asList(13, 27, 28, 38, 42, 43, 53));
-                    // set the content of the script, the example.html is located in the jar: /syntaxhighlighter/example/example.html
+                    // set the content of the script, the example.html is located in the jar: /prettify/example/example.html
                     highlighter.setContent(new String(readResourceFile("/prettify/example/example.html")));
 
                     // timer end
