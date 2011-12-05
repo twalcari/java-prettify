@@ -156,7 +156,6 @@ nbproject/genfiles.properties -text
 nbproject/project.properties -text
 nbproject/project.xml -text
 src/prettify/SyntaxHighlighter.java -text
-src/prettify/Util.java -text
 src/prettify/example/Example.java -text
 src/prettify/example/example.html -text
 src/prettify/example/package-info.java -text
@@ -186,6 +185,7 @@ src/prettify/lang/package-info.java -text
 src/prettify/parser/CombinePrefixPattern.java -text
 src/prettify/parser/Job.java -text
 src/prettify/parser/Prettify.java -text
+src/prettify/parser/Util.java -text
 src/prettify/parser/package-info.java -text
 src/prettify/theme/Style.java -text
 src/prettify/theme/Theme.java -text
