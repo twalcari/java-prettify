@@ -205,6 +205,7 @@ test/prettify/PrettifyTest/result/issue14a.txt -text
 test/prettify/PrettifyTest/result/issue14b.txt -text
 test/prettify/PrettifyTest/result/issue20.txt -text
 test/prettify/PrettifyTest/result/issue21.txt -text
+test/prettify/PrettifyTest/result/issue217.txt -text
 test/prettify/PrettifyTest/result/issue24.txt -text
 test/prettify/PrettifyTest/result/issue27.txt -text
 test/prettify/PrettifyTest/result/issue30.txt -text
@@ -254,6 +255,7 @@ test/prettify/PrettifyTest/source/issue14a.txt -text
 test/prettify/PrettifyTest/source/issue14b.txt -text
 test/prettify/PrettifyTest/source/issue20.txt -text
 test/prettify/PrettifyTest/source/issue21.txt -text
+test/prettify/PrettifyTest/source/issue217.txt -text
 test/prettify/PrettifyTest/source/issue24.txt -text
 test/prettify/PrettifyTest/source/issue27.txt -text
 test/prettify/PrettifyTest/source/issue30.txt -text
