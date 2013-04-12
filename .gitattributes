@@ -154,6 +154,7 @@ src/prettify/lang/LangCss.java -text
 src/prettify/lang/LangGo.java -text
 src/prettify/lang/LangHs.java -text
 src/prettify/lang/LangLisp.java -text
+src/prettify/lang/LangLlvm.java -text
 src/prettify/lang/LangLua.java -text
 src/prettify/lang/LangMl.java -text
 src/prettify/lang/LangN.java -text
@@ -219,6 +220,7 @@ test/prettify/PrettifyTest/result/issue93.txt -text
 test/prettify/PrettifyTest/result/java.txt -text
 test/prettify/PrettifyTest/result/java_lang.txt -text
 test/prettify/PrettifyTest/result/javascript.txt -text
+test/prettify/PrettifyTest/result/llvm.txt -text
 test/prettify/PrettifyTest/result/misc1.txt -text
 test/prettify/PrettifyTest/result/perl.txt -text
 test/prettify/PrettifyTest/result/proto.txt -text
@@ -267,6 +269,7 @@ test/prettify/PrettifyTest/source/issue93.txt -text
 test/prettify/PrettifyTest/source/java.txt -text
 test/prettify/PrettifyTest/source/java_lang.txt -text
 test/prettify/PrettifyTest/source/javascript.txt -text
+test/prettify/PrettifyTest/source/llvm.txt -text
 test/prettify/PrettifyTest/source/misc1.txt -text
 test/prettify/PrettifyTest/source/perl.txt -text
 test/prettify/PrettifyTest/source/proto.txt -text
