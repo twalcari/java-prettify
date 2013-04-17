@@ -186,6 +186,9 @@ src/syntaxhighlight/Style.java -text
 src/syntaxhighlight/SyntaxHighlighter.java -text
 src/syntaxhighlight/SyntaxHighlighterPane.java -text
 src/syntaxhighlight/Theme.java -text
+test/bin/diffutils/diff.exe -text
+test/bin/diffutils/libiconv2.dll -text
+test/bin/diffutils/libintl3.dll -text
 test/prettify/PrettifyTest.java -text
 test/prettify/PrettifyTest/result/C.txt -text
 test/prettify/PrettifyTest/result/C_lang.txt -text
