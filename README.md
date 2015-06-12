@@ -1,4 +1,5 @@
 #Java Prettify
+[![Build Status](https://travis-ci.org/twalcari/java-prettify.svg?branch=trunk)](https://travis-ci.org/twalcari/java-prettify)
 
 ##Overview
 
