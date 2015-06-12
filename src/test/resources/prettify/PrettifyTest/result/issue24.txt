@@ -1,0 +1,51 @@
+`PLNos`END`PUN=`END`PLNrequire`END`PUN(`END`STR"os"`END`PUN)`END`PLN
+math`END`PUN=`END`PLNrequire`END`PUN(`END`STR"math"`END`PUN)`END`PLN
+
+`END`COM-- Examples from the language reference`END`PLN
+     a `END`PUN=`END`PLN `END`STR'alo\n123"'`END`PLN
+     a `END`PUN=`END`PLN `END`STR"alo\n123\""`END`PLN
+     a `END`PUN=`END`PLN `END`STR'\97lo\10\04923"'`END`PLN
+     a `END`PUN=`END`PLN `END`STR[[alo
+     123"]]`END`PLN
+     a `END`PUN=`END`PLN `END`STR[==[
+     alo
+     123"]==]`END`PLN
+
+`END`LIT3`END`PLN   `END`LIT3.0`END`PLN   `END`LIT3.1416`END`PLN   `END`LIT314.16e-2`END`PLN   `END`LIT0.31416E1`END`PLN   `END`LIT0xff`END`PLN   `END`LIT0x56`END`PLN
+
+`END`COM-- Some comments that demonstrate long brackets`END`PLN
+double_quoted `END`PUN=`END`PLN `END`STR"Not a long bracket [=["`END`PLN
+`END`COM--[=[ quoting out
+ [[ foo ]]
+ [==[does not end comment either]==]
+]=]`END`PLN
+past_end_of_comment
+`END`COM--]=]`END`PLN
+
+`END`COM-- Example code courtesy Joseph Harmbruster`END`PLN
+`END`PUN#`END`PLN
+`END`KWDdo`END`PLN
+  `END`KWDlocal`END`PLN `END`KWDfunction`END`PLN ssgeneral`END`PUN(`END`PLNt`END`PUN,`END`PLN n`END`PUN,`END`PLN before`END`PUN)`END`PLN
+    `END`KWDfor`END`PLN _`END`PUN,`END`PLN h `END`KWDin`END`PLN ipairs`END`PUN(`END`PLNincs`END`PUN)`END`PLN `END`KWDdo`END`PLN
+      `END`KWDfor`END`PLN i `END`PUN=`END`PLN h `END`PUN+`END`PLN `END`LIT1`END`PUN,`END`PLN n `END`KWDdo`END`PLN
+        `END`KWDlocal`END`PLN v `END`PUN=`END`PLN t`END`PUN[`END`PLNi`END`PUN]`END`PLN
+        `END`KWDfor`END`PLN j `END`PUN=`END`PLN i `END`PUN-`END`PLN h`END`PUN,`END`PLN `END`LIT1`END`PUN,`END`PLN `END`PUN-`END`PLNh `END`KWDdo`END`PLN
+          `END`KWDlocal`END`PLN testval `END`PUN=`END`PLN t`END`PUN[`END`PLNj`END`PUN]`END`PLN
+          `END`KWDif`END`PLN `END`KWDnot`END`PLN before`END`PUN(`END`PLNv`END`PUN,`END`PLN testval`END`PUN)`END`PLN `END`KWDthen`END`PLN `END`KWDbreak`END`PLN `END`KWDend`END`PLN
+          t`END`PUN[`END`PLNi`END`PUN]`END`PLN `END`PUN=`END`PLN testval`END`PUN;`END`PLN i `END`PUN=`END`PLN j
+        `END`KWDend`END`PLN
+        t`END`PUN[`END`PLNi`END`PUN]`END`PLN `END`PUN=`END`PLN v
+      `END`KWDend`END`PLN 
+    `END`KWDend`END`PLN
+    `END`KWDreturn`END`PLN t
+  `END`KWDend`END`PLN
+
+  `END`KWDfunction`END`PLN shellsort`END`PUN(`END`PLNt`END`PUN,`END`PLN before`END`PUN,`END`PLN n`END`PUN)`END`PLN
+    n `END`PUN=`END`PLN n `END`KWDor`END`PLN `END`PUN#`END`PLNt
+    `END`KWDif`END`PLN `END`KWDnot`END`PLN before `END`KWDor`END`PLN before `END`PUN==`END`PLN `END`STR"&lt;"`END`PLN `END`KWDthen`END`PLN `END`KWDreturn`END`PLN ssup`END`PUN(`END`PLNt`END`PUN,`END`PLN n`END`PUN)`END`PLN
+    `END`KWDelseif`END`PLN before `END`PUN==`END`PLN `END`STR"&gt;"`END`PLN `END`KWDthen`END`PLN `END`KWDreturn`END`PLN ssdown`END`PUN(`END`PLNt`END`PUN,`END`PLN n`END`PUN)`END`PLN
+    `END`KWDelse`END`PLN `END`KWDreturn`END`PLN ssgeneral`END`PUN(`END`PLNt`END`PUN,`END`PLN n`END`PUN,`END`PLN before`END`PUN)`END`PLN
+    `END`KWDend`END`PLN
+  `END`KWDend`END`PLN
+  `END`KWDreturn`END`PLN shellsort
+`END`KWDend`END

@@ -1,0 +1,22 @@
+`COM&lt;!--`END`PLN
+`END`KWD@charset`END`PUN(`END`STR'UTF-8'`END`PUN);`END`PLN
+
+`END`COM/** A url that is not quoted. */`END`PLN
+`END`KWD@import`END`PUN(`END`KWDurl`END`PUN(`END`STR/more-styles.css`END`PUN));`END`PLN
+
+HTML `END`PUN{`END`PLN `END`KWDcontent-before`END`PUN:`END`PLN `END`STR'hello\20'`END`PUN;`END`PLN `END`KWDcontent-after`END`PUN:`END`PLN `END`STR'w\6f rld'`END`PUN;`END`PLN
+       `END`KWD-moz-spiff`END`PUN:`END`PLN `END`KWDinherit`END`PLN `END`KWD!important`END`PLN `END`PUN}`END`PLN
+
+`END`COM/* Test units on numbers. */`END`PLN
+BODY `END`PUN{`END`PLN `END`KWDmargin-bottom`END`PUN:`END`PLN `END`LIT4px`END`PUN;`END`PLN `END`KWDmargin-left`END`PUN:`END`PLN `END`LIT3in`END`PUN;`END`PLN `END`KWDmargin-bottom`END`PUN:`END`PLN `END`LIT0`END`PUN;`END`PLN `END`KWDmargin-top`END`PUN:`END`PLN `END`LIT5%`END`PLN `END`PUN}`END`PLN
+
+`END`COM/** Test number literals and quoted values. */`END`PLN
+TABLE`END`PUN.`END`PLNfoo TR`END`PUN.`END`PLNbar A`END`PUN#`END`PLNvisited `END`PUN{`END`PLN `END`KWDcolor`END`PUN:`END`PLN `END`LIT#001123`END`PUN;`END`PLN `END`KWDfont-family`END`PUN:`END`PLN `END`STR"monospace"`END`PLN `END`PUN}`END`PLN
+`END`COM/** bolder is not a name, so should be plain.  !IMPORTANT is a keyword
+  * regardless of case.
+  */`END`PLN
+blink `END`PUN{`END`PLN `END`KWDtext-decoration`END`PUN:`END`PLN BLINK `END`KWD!IMPORTANT`END`PUN;`END`PLN `END`KWDfont-weight`END`PUN:`END`PLN bolder `END`PUN}`END`PLN
+`END`COM/* Empty url() was causing infinite recursion */`END`PLN
+a `END`PUN{`END`PLN `END`KWDbackground-image`END`PUN:`END`PLN `END`KWDurl`END`PUN();`END`PLN `END`PUN}`END`PLN
+p`END`PUN#`END`PLNfeatured`END`PUN{`END`KWDbackground`END`PUN:`END`LIT#fea`END`PUN}`END`PLN
+`END`COM--&gt;`END

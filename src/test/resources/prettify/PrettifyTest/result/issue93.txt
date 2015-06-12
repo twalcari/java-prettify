@@ -1,0 +1,4 @@
+`COM// The normal string syntax`END`PLN
+`END`KWDstring`END`PLN a `END`PUN=`END`PLN `END`STR"C:\\"`END`PUN;`END`PLN
+`END`COM// is equivalent to a verbatim string`END`PLN
+`END`KWDstring`END`PLN b `END`PUN=`END`PLN `END`STR@"C:\"`END`PUN;`END

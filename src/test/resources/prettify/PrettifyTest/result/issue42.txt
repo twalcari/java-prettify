@@ -1,0 +1,39 @@
+`COM; -*- mode: lisp -*-`END`PLN
+
+`END`OPN(`END`KWDdefun`END`PLN back-six-lines `END`OPN(`END`CLO)`END`PLN `END`OPN(`END`PLNinteractive`END`CLO)`END`PLN `END`OPN(`END`PLNforward-line `END`LIT-6`END`CLO))`END`PLN
+`END`OPN(`END`KWDdefun`END`PLN forward-six-lines `END`OPN(`END`CLO)`END`PLN `END`OPN(`END`PLNinteractive`END`CLO)`END`PLN `END`OPN(`END`PLNforward-line `END`LIT6`END`CLO))`END`PLN
+
+`END`OPN(`END`PLNglobal-set-key `END`STR"\M-l"`END`PLN `END`LIT'goto-line`END`CLO)`END`PLN
+`END`OPN(`END`PLNglobal-set-key `END`STR"\C-z"`END`PLN `END`LIT'advertised-undo`END`CLO)`END`PLN
+`END`OPN(`END`PLNglobal-set-key `END`PUN[`END`PLNC-insert`END`PUN]`END`PLN `END`LIT'clipboard-kill-ring-save`END`CLO)`END`PLN
+`END`OPN(`END`PLNglobal-set-key `END`PUN[`END`PLNS-insert`END`PUN]`END`PLN `END`LIT'clipboard-yank`END`CLO)`END`PLN
+`END`OPN(`END`PLNglobal-set-key `END`PUN[`END`PLNC-up`END`PUN]`END`PLN `END`LIT'back-six-lines`END`CLO)`END`PLN
+`END`OPN(`END`PLNglobal-set-key `END`PUN[`END`PLNC-down`END`PUN]`END`PLN `END`LIT'forward-six-lines`END`CLO)`END`PLN
+
+`END`OPN(`END`KWDsetq`END`PLN visible-bell `END`KWDt`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN user-mail-address `END`STR"foo@bar.com"`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN default-major-mode `END`LIT'text-mode`END`CLO)`END`PLN
+
+`END`OPN(`END`PLNsetenv `END`STR"TERM"`END`PLN `END`STR"emacs"`END`CLO)`END`PLN
+`END`OPN(`END`PLNc-set-offset `END`LIT'case-label`END`PLN `END`LIT2`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN c-basic-offset `END`LIT2`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN perl-indent-level `END`LIT0x2`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN delete-key-deletes-forward `END`KWDt`END`CLO)`END`PLN
+`END`OPN(`END`KWDsetq`END`PLN indent-tabs-mode `END`KWDnil`END`CLO)`END`PLN
+
+`END`COM;; Text mode`END`PLN
+`END`OPN(`END`PLNadd-hook `END`LIT'text-mode-hook`END`PLN 
+  `END`LIT'`END`OPN(`END`KWDlambda`END`PLN `END`OPN(`END`CLO)`END`PLN
+     `END`OPN(`END`PLNturn-on-auto-fill`END`CLO)`END`PLN
+   `END`CLO)`END`PLN
+`END`CLO)`END`PLN
+
+`END`COM;; Fundamental mode`END`PLN
+`END`OPN(`END`PLNadd-hook `END`LIT'fundamental-mode-hook`END`PLN 
+  `END`LIT'`END`OPN(`END`KWDlambda`END`PLN `END`OPN(`END`CLO)`END`PLN
+     `END`OPN(`END`PLNturn-on-auto-fill`END`CLO)`END`PLN
+   `END`CLO)`END`PLN
+`END`CLO)`END`PLN
+
+`END`COM;; Define and cond are keywords in scheme`END`PLN
+`END`OPN(`END`KWDdefine`END`PLN `END`OPN(`END`PLNsqt x`END`CLO)`END`PLN `END`OPN(`END`PLNsqrt-iter `END`LIT1.0`END`PLN `END`LIT2.0`END`PLN x`END`CLO))`END

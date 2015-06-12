@@ -1,0 +1,19 @@
+(*
+ * Print the 10th fibonacci number
+ *)
+
+//// A line comment
+"A string";;
+(0, 125, 0xa0, -1.0, 1e6, 1.2e-3);;  // number literals
+
+#if fibby
+  let
+    rec fib = function (0, a, _) -> a
+                     | (n, a, b) -> fib(n - 1, a + b, a)
+  in
+    print_int(fib(10, 1, 1));;
+#endif
+
+let zed = 'z'
+
+let f' x' = x' + 1

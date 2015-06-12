@@ -1,0 +1,47 @@
+`KWDpackage`END`PLN foo`END`PUN;`END
+`PLN `END
+`KWDimport`END`PLN java`END`PUN.`END`PLNutil`END`PUN.`END`TYPIterator`END`PUN;`END
+`PLN `END
+`COM/**`END
+`COM * the fibonacci series implemented as an Iterable.`END
+`COM */`END
+`KWDpublic`END`PLN `END`KWDfinal`END`PLN `END`KWDclass`END`PLN `END`TYPFibonacci`END`PLN `END`KWDimplements`END`PLN `END`TYPIterable`END`PUN<`END`TYPInteger`END`PUN>`END`PLN `END`PUN{`END
+`PLN  `END`COM/** the next and previous members of the series. */`END
+`PLN  `END`KWDprivate`END`PLN `END`KWDint`END`PLN a `END`PUN=`END`PLN `END`LIT1`END`PUN,`END`PLN b `END`PUN=`END`PLN `END`LIT1`END`PUN;`END
+`PLN `END
+`PLN  `END`LIT@Override`END
+`PLN  `END`KWDpublic`END`PLN `END`TYPIterator`END`PUN<`END`TYPInteger`END`PUN>`END`PLN iterator`END`PUN()`END`PLN `END`PUN{`END
+`PLN    `END`KWDreturn`END`PLN `END`KWDnew`END`PLN `END`TYPIterator`END`PUN<`END`TYPInteger`END`PUN>()`END`PLN `END`PUN{`END
+`PLN      `END`COM/** the series is infinite. */`END
+`PLN      `END`KWDpublic`END`PLN `END`KWDboolean`END`PLN hasNext`END`PUN()`END`PLN `END`PUN{`END`PLN `END`KWDreturn`END`PLN `END`KWDtrue`END`PUN;`END`PLN `END`PUN}`END
+`PLN      `END`KWDpublic`END`PLN `END`TYPInteger`END`PLN next`END`PUN()`END`PLN `END`PUN{`END
+`PLN        `END`KWDint`END`PLN tmp `END`PUN=`END`PLN a`END`PUN;`END
+`PLN        a `END`PUN+=`END`PLN b`END`PUN;`END
+`PLN        b `END`PUN=`END`PLN tmp`END`PUN;`END
+`PLN        `END`KWDreturn`END`PLN a`END`PUN;`END
+`PLN      `END`PUN}`END
+`PLN      `END`KWDpublic`END`PLN `END`KWDvoid`END`PLN remove`END`PUN()`END`PLN `END`PUN{`END`PLN `END`KWDthrow`END`PLN `END`KWDnew`END`PLN `END`TYPUnsupportedOperationException`END`PUN();`END`PLN `END`PUN}`END
+`PLN    `END`PUN};`END
+`PLN  `END`PUN}`END
+`PLN `END
+`PLN  `END`COM/**`END
+`COM   * the n<sup>th</sup> element of the given series.`END
+`COM   * @throws NoSuchElementException if there are less than n elements in the`END
+`COM   *   given Iterable's {@link Iterable#iterator iterator}.`END
+`COM   */`END
+`PLN  `END`KWDpublic`END`PLN `END`KWDstatic`END`PLN `END`PUN<`END`PLNT`END`PUN>`END
+`PLN  T nth`END`PUN(`END`KWDint`END`PLN n`END`PUN,`END`PLN `END`TYPIterable`END`PUN<`END`PLNT`END`PUN>`END`PLN iterable`END`PUN)`END`PLN `END`PUN{`END
+`PLN    `END`TYPIterator`END`PUN<?`END`PLN `END`KWDextends`END`PLN T`END`PUN>`END`PLN in `END`PUN=`END`PLN iterable`END`PUN.`END`PLNiterator`END`PUN();`END
+`PLN    `END`KWDwhile`END`PLN `END`PUN(--`END`PLNn `END`PUN>`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END
+`PLN      in`END`PUN.`END`PLNnext`END`PUN();`END
+`PLN    `END`PUN}`END
+`PLN    `END`KWDreturn`END`PLN in`END`PUN.`END`PLNnext`END`PUN();`END
+`PLN  `END`PUN}`END
+`PLN `END
+`PLN  `END`KWDpublic`END`PLN `END`KWDstatic`END`PLN `END`KWDvoid`END`PLN main`END`PUN(`END`TYPString`END`PUN[]`END`PLN args`END`PUN)`END`PLN `END`PUN{`END
+`PLN    `END`TYPSystem`END`PUN.`END`PLNout`END`PUN.`END`PLNprint`END`PUN(`END`PLNnth`END`PUN(`END`LIT10`END`PUN,`END`PLN `END`KWDnew`END`PLN `END`TYPFibonacci`END`PUN()));`END
+`PLN  `END`PUN}`END
+`PUN}`END
+`PLN `END
+`PUN#`END`PLN not a java comment`END
+`PUN#`END`PLN not keywords`END`PUN:`END`PLN static_cast and namespace`END

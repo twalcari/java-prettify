@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+use strict;
+use integer;
+
+# the nth element of the fibonacci series
+# param n - an int >= 0
+# return an int >= 0
+sub fib($) {
+  my $n = shift, $a = 1, $b = 1;
+  ($a, $b) = ($a + $b, $a) until (--$n < 0);
+  return $a;
+}
+
+print fib(10);

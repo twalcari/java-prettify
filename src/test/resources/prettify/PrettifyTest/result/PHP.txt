@@ -1,0 +1,25 @@
+`TAG&lt;html&gt;`END`PLN
+  `END`TAG&lt;head&gt;`END`PLN
+    `END`TAG&lt;title&gt;`END`PUN&lt;?=`END`PLN `END`STR'Fibonacci numbers'`END`PLN `END`PUN?&gt;`END`TAG&lt;/title&gt;`END`PLN
+
+    `END`PUN&lt;?`END`PLNphp
+      `END`COM// PHP has a plethora of comment types`END`PLN
+      `END`COM/* What is a
+         "plethora"? */`END`PLN
+      `END`KWDfunction`END`PLN fib`END`PUN(`END`PLN$n`END`PUN)`END`PLN `END`PUN{`END`PLN
+        `END`COM# I don't know.`END`PLN
+        $a `END`PUN=`END`PLN `END`LIT1`END`PUN;`END`PLN
+        $b `END`PUN=`END`PLN `END`LIT1`END`PUN;`END`PLN
+        `END`KWDwhile`END`PLN `END`PUN(--`END`PLN$n `END`PUN&gt;=`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END`PLN
+          echo `END`STR"$a\n"`END`PUN;`END`PLN
+          $tmp `END`PUN=`END`PLN $a`END`PUN;`END`PLN
+          $a `END`PUN+=`END`PLN $b`END`PUN;`END`PLN
+          $b `END`PUN=`END`PLN $tmp`END`PUN;`END`PLN
+        `END`PUN}`END`PLN
+      `END`PUN}`END`PLN
+    `END`PUN?&gt;`END`PLN
+  `END`TAG&lt;/head&gt;`END`PLN
+  `END`TAG&lt;body&gt;`END`PLN
+    `END`PUN&lt;?=`END`PLN fib`END`PUN(`END`LIT10`END`PUN)`END`PLN `END`PUN?&gt;`END`PLN
+  `END`TAG&lt;/body&gt;`END`PLN
+`END`TAG&lt;/html&gt;`END

@@ -1,0 +1,11 @@
+<!DOCTYPE series PUBLIC "fibonacci numbers">
+
+<series.root base="1" step="s(n-2) + s(n-1)">
+  <element i="0">1</element>
+  <element i="1">1</element>
+  <element i="2">2</element>
+  <element i="3">3</element>
+  <element i="4">5</element>
+  <element i="5">8</element>
+  ...
+</series.root>

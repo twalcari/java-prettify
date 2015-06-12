@@ -1,3 +1,0 @@
-throw new RuntimeException("Element [" + element.getName() + 
-  "] missing attribute.");
-variable++;

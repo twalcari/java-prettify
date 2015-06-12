@@ -1,0 +1,10 @@
+<script type="text/javascript">
+   var savedTarget=null;                           // The target layer (effectively vidPane)
+   var orgCursor=null;                             // The original mouse style so we can restore it
+   var dragOK=false;                               // True if we're allowed to move the element under mouse
+   var dragXoffset=0;                              // How much we've moved the element on the horozontal
+   var dragYoffset=0;                              // How much we've moved the element on the verticle
+   vidPaneID = document.getElementById('vidPane'); // Our movable layer
+   vidPaneID.style.top='75px';                     // Starting location horozontal
+   vidPaneID.style.left='75px';                    // Starting location verticle
+<script>

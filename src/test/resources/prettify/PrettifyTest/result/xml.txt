@@ -1,0 +1,11 @@
+`DEC&lt;!DOCTYPE series PUBLIC "fibonacci numbers"&gt;`END`PLN
+
+`END`TAG&lt;series.root`END`PLN `END`ATNbase`END`PUN=`END`ATV"1"`END`PLN `END`ATNstep`END`PUN=`END`ATV"s(n-2) + s(n-1)"`END`TAG&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"0"`END`TAG&gt;`END`PLN1`END`TAG&lt;/element&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"1"`END`TAG&gt;`END`PLN1`END`TAG&lt;/element&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"2"`END`TAG&gt;`END`PLN2`END`TAG&lt;/element&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"3"`END`TAG&gt;`END`PLN3`END`TAG&lt;/element&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"4"`END`TAG&gt;`END`PLN5`END`TAG&lt;/element&gt;`END`PLN
+  `END`TAG&lt;element`END`PLN `END`ATNi`END`PUN=`END`ATV"5"`END`TAG&gt;`END`PLN8`END`TAG&lt;/element&gt;`END`PLN
+  ...
+`END`TAG&lt;/series.root&gt;`END

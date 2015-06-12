@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title><?= 'Fibonacci numbers' ?></title>
+
+    <?php
+      // PHP has a plethora of comment types
+      /* What is a
+         "plethora"? */
+      function fib($n) {
+        # I don't know.
+        $a = 1;
+        $b = 1;
+        while (--$n >= 0) {
+          echo "$a\n";
+          $tmp = $a;
+          $a += $b;
+          $b = $tmp;
+        }
+      }
+    ?>
+  </head>
+  <body>
+    <?= fib(10) ?>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+`TAG&lt;html&gt;`END`PLN
+  `END`TAG&lt;head&gt;`END`PLN
+    `END`TAG&lt;title&gt;`END`PLNFibonacci number`END`TAG&lt;/title&gt;`END`PLN
+    `END`TAG&lt;style&gt;`END`COM&lt;!--`END`PLN BODY `END`PUN{`END`PLN `END`KWDtext-decoration`END`PUN:`END`PLN blink `END`PUN}`END`PLN `END`COM--&gt;`END`TAG&lt;/style&gt;`END`PLN
+    `END`TAG&lt;script`END`PLN `END`ATNsrc`END`PUN=`END`ATV"foo.js"`END`TAG&gt;&lt;/script&gt;`END`PLN
+    `END`TAG&lt;script`END`PLN `END`ATNsrc`END`PUN=`END`ATV"bar.js"`END`TAG&gt;&lt;/script&gt;`END`PLN
+  `END`TAG&lt;/head&gt;`END`PLN
+  `END`TAG&lt;body&gt;`END`PLN
+    `END`TAG&lt;noscript&gt;`END`PLN
+      `END`TAG&lt;dl&gt;`END`PLN
+        `END`TAG&lt;dt&gt;`END`PLNFibonacci numbers`END`TAG&lt;/dt&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN1`END`TAG&lt;/dd&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN1`END`TAG&lt;/dd&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN2`END`TAG&lt;/dd&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN3`END`TAG&lt;/dd&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN5`END`TAG&lt;/dd&gt;`END`PLN
+        `END`TAG&lt;dd&gt;`END`PLN8`END`TAG&lt;/dd&gt;`END`PLN
+        &amp;hellip;
+      `END`TAG&lt;/dl&gt;`END`PLN
+    `END`TAG&lt;/noscript&gt;`END`PLN
+
+    `END`TAG&lt;script`END`PLN `END`ATNtype`END`PUN=`END`ATV"text/javascript"`END`TAG&gt;`END`PUN&lt;!--`END`PLN
+`END`KWDfunction`END`PLN fib`END`PUN(`END`PLNn`END`PUN)`END`PLN `END`PUN{`END`PLN
+  `END`KWDvar`END`PLN a `END`PUN=`END`PLN `END`LIT1`END`PUN,`END`PLN b `END`PUN=`END`PLN `END`LIT1`END`PUN;`END`PLN
+  `END`KWDvar`END`PLN tmp`END`PUN;`END`PLN
+  `END`KWDwhile`END`PLN `END`PUN(--`END`PLNn `END`PUN&gt;=`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END`PLN
+    tmp `END`PUN=`END`PLN a`END`PUN;`END`PLN
+    a `END`PUN+=`END`PLN b`END`PUN;`END`PLN
+    b `END`PUN=`END`PLN tmp`END`PUN;`END`PLN
+  `END`PUN}`END`PLN
+  `END`KWDreturn`END`PLN a`END`PUN;`END`PLN
+`END`PUN}`END`PLN
+
+document`END`PUN.`END`PLNwriteln`END`PUN(`END`PLNfib`END`PUN(`END`LIT10`END`PUN));`END`PLN
+`END`COM// --&gt;`END`PLN
+    `END`TAG&lt;/script&gt;`END`PLN
+  `END`TAG&lt;/body&gt;`END`PLN
+`END`TAG&lt;/html&gt;`END

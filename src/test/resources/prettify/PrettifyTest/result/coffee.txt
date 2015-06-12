@@ -1,0 +1,47 @@
+`KWDclass`END`PLN `END`TYPAnimal`END`PLN
+  constructor`END`PUN:`END`PLN `END`PUN(`END`LIT@name`END`PUN)`END`PLN `END`PUN-&gt;`END`PLN
+  move`END`PUN:`END`PLN `END`PUN(`END`PLNmeters`END`PUN,`END`PLN loc`END`PUN)`END`PLN `END`PUN-&gt;`END`PLN
+    alert `END`LIT@name`END`PLN `END`PUN+`END`PLN `END`STR" moved "`END`PLN `END`PUN+`END`PLN meters `END`PUN+`END`PLN `END`STR"m."`END`PLN
+  travel`END`PUN:`END`PLN `END`PUN(`END`PLNpath`END`PUN...)`END`PLN `END`PUN-&gt;`END`PLN
+    `END`KWDfor`END`PLN place `END`KWDin`END`PLN path
+      `END`LIT@move`END`PLN place`END`PUN.`END`PLNdistance`END`PUN,`END`PLN place`END`PUN.`END`PLNlocation
+
+`END`KWDclass`END`PLN `END`TYPHorse`END`PLN `END`KWDextends`END`PLN `END`TYPAnimal`END`PLN
+  `END`COM###
+  @param name Horse name
+  @param jumper Jumping ability
+  ###`END`PLN
+  constructor`END`PUN:`END`PLN `END`PUN(`END`PLNname`END`PUN,`END`PLN jumper`END`PUN)`END`PLN `END`PUN-&gt;`END`PLN
+    `END`KWDsuper`END`PLN name
+    `END`LIT@capable`END`PLN `END`PUN=`END`PLN jumper
+  step`END`PUN:`END`PLN `END`PUN-&gt;`END`PLN
+    alert `END`STR'''
+          Step,
+          step...
+          '''`END`PLN
+  jump`END`PUN:`END`PLN `END`PUN-&gt;`END`PLN
+    `END`LIT@capable`END`PLN
+  move`END`PUN:`END`PLN `END`PUN(`END`PLNmeters`END`PUN,`END`PLN where`END`PUN)`END`PLN `END`PUN-&gt;`END`PLN
+    switch where
+      `END`KWDwhen`END`PLN `END`STR"ground"`END`PLN
+        `END`LIT@step`END`PUN()`END`PLN
+        `END`KWDsuper`END`PLN meters
+      `END`KWDwhen`END`PLN `END`STR"hurdle"`END`PLN
+        `END`KWDsuper`END`PLN meters `END`KWDif`END`PLN `END`LIT@jump`END`PUN()`END`PLN
+
+`END`COM# Create horse`END`PLN
+tom `END`PUN=`END`PLN `END`KWDnew`END`PLN `END`TYPHorse`END`PLN `END`STR"Tommy"`END`PUN,`END`PLN `END`KWDyes`END`PLN
+
+street `END`PUN=`END`PLN
+  location`END`PUN:`END`PLN `END`STR"ground"`END`PLN
+  distance`END`PUN:`END`PLN `END`LIT12`END`PLN
+car `END`PUN=`END`PLN
+  location`END`PUN:`END`PLN `END`STR"hurdle"`END`PLN
+  distance`END`PUN:`END`PLN `END`LIT2`END`PLN
+
+`END`COM###
+Tell him to travel:
+1. through the street
+2. over the car
+###`END`PLN
+tom`END`PUN.`END`PLNtravel street`END`PUN,`END`PLN car`END

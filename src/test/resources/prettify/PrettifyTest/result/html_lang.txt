@@ -1,0 +1,30 @@
+`PLNFibonacci Numbers
+
+`END`TAG&lt;noscript&gt;`END`PLN
+  `END`TAG&lt;dl`END`PLN `END`ATNstyle`END`PUN=`END`ATV"`END`KWDlist-style`END`PUN:`END`PLN disc`END`ATV"`END`TAG&gt;`END`PLN
+    `END`TAG&lt;dt&gt;`END`PLNFibonacci numbers`END`TAG&lt;/dt&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN1`END`TAG&lt;/dd&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN1`END`TAG&lt;/dd&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN2`END`TAG&lt;/dd&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN3`END`TAG&lt;/dd&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN5`END`TAG&lt;/dd&gt;`END`PLN
+    `END`TAG&lt;dd&gt;`END`PLN8`END`TAG&lt;/dd&gt;`END`PLN
+    &amp;hellip;
+  `END`TAG&lt;/dl&gt;`END`PLN
+`END`TAG&lt;/noscript&gt;`END`PLN
+
+`END`TAG&lt;script`END`PLN `END`ATNtype`END`PUN=`END`ATV"text/javascript"`END`TAG&gt;`END`PUN&lt;!--`END`PLN
+`END`KWDfunction`END`PLN fib`END`PUN(`END`PLNn`END`PUN)`END`PLN `END`PUN{`END`PLN
+  `END`KWDvar`END`PLN a `END`PUN=`END`PLN `END`LIT1`END`PUN,`END`PLN b `END`PUN=`END`PLN `END`LIT1`END`PUN;`END`PLN
+  `END`KWDvar`END`PLN tmp`END`PUN;`END`PLN
+  `END`KWDwhile`END`PLN `END`PUN(--`END`PLNn `END`PUN&gt;=`END`PLN `END`LIT0`END`PUN)`END`PLN `END`PUN{`END`PLN
+    tmp `END`PUN=`END`PLN a`END`PUN;`END`PLN
+    a `END`PUN+=`END`PLN b`END`PUN;`END`PLN
+    b `END`PUN=`END`PLN tmp`END`PUN;`END`PLN
+  `END`PUN}`END`PLN
+  `END`KWDreturn`END`PLN a`END`PUN;`END`PLN
+`END`PUN}`END`PLN
+
+document`END`PUN.`END`PLNwriteln`END`PUN(`END`PLNfib`END`PUN(`END`LIT10`END`PUN));`END`PLN
+`END`COM// --&gt;`END`PLN
+`END`TAG&lt;/script&gt;`END

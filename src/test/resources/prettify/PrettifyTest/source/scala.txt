@@ -1,0 +1,55 @@
+/* comment 1 */
+/*
+comment 2
+*/
+/* comment / * comment 3 **/
+// strings
+"Hello, World!", "\n",
+`an-identifier`, `\n`,
+'A', '\n',
+'aSymbol,
+"""Hello,
+World""", """Hello,\nWorld""",
+"""Hello, "World"!""",
+"""Hello, \"World\""""
+
+// Numbers
+0
+0123
+0xa0
+0XA0L
+123
+123.45
+1.50F
+0.50
+.50
+123e-1
+123.45e+1
+1.50e2
+0.50e-6
+.50e+42f
+
+// Values
+false, true, null, this;
+
+// Keywords
+class MyClass;
+import foo.bar;
+package baz;
+
+// From scala-lang.org/node/242
+def act() {
+  var pongCount = 0
+  loop {
+    react {
+      case Ping =>
+        if (pongCount % 1000 == 0)
+          Console.println("Pong: ping "+pongCount)
+        sender ! Pong
+        pongCount = pongCount + 1
+      case Stop =>
+        Console.println("Pong: stop")
+        exit()
+    }
+  }
+}

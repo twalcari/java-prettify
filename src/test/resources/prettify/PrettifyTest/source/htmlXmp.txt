@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Fibonacci number</title>
+  </head>
+  <body>
+    <noscript>
+      <dl>
+        <dt>Fibonacci numbers</dt>
+        <dd>1</dd>
+        <dd>1</dd>
+        <dd>2</dd>
+        <dd>3</dd>
+        <dd>5</dd>
+        <dd>8</dd>
+        &hellip;
+      </dl>
+    </noscript>
+
+    <script type="text/javascript"><!--
+function fib(n) {
+  var a = 1, b = 1;
+  var tmp;
+  while (--n >= 0) {
+    tmp = a;
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+document.writeln(fib(10));
+// -->
+    </script>
+  </body>
+</html>

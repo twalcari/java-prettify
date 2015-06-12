@@ -1,0 +1,17 @@
+#!/bin/bash
+ 
+# Fibonacci numbers
+# Writes an infinite series to stdout, one entry per line
+function fib() {
+  local a=1
+  local b=1
+  while true ; do
+    echo $a
+    local tmp=$a
+    a=$(( $a + $b ))
+    b=$tmp
+  done
+}
+ 
+# output the 10th element of the series and halt
+fib | /usr/bin/*head -10 | tail -1

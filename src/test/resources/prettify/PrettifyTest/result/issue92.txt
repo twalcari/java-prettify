@@ -1,0 +1,11 @@
+`PUN&lt;?`END`PLNxml version`END`PUN=`END`STR"1.0"`END`PLN encoding`END`PUN=`END`STR"UTF-8"`END`PUN?&gt;`END`PLN
+`END`TAG&lt;kml`END`PLN `END`ATNxmlns`END`PUN=`END`ATV"http://www.opengis.net/kml/2.2"`END`TAG&gt;`END`PLN
+  `END`TAG&lt;Placemark&gt;`END`PLN
+    `END`TAG&lt;name&gt;`END`PLNSimple placemark`END`TAG&lt;/name&gt;`END`PLN
+    `END`TAG&lt;description`END`PLN `END`ATNLang`END`PUN=`END`ATV"en"`END`TAG&gt;`END`PLNAttached to the ground. Intelligently places itself 
+       at the height of the underlying terrain.`END`TAG&lt;/description&gt;`END`PLN
+    `END`TAG&lt;Point&gt;`END`PLN
+      `END`TAG&lt;coordinates&gt;`END`PLN-122.0822035425683,37.42228990140251,0`END`TAG&lt;/coordinates&gt;`END`PLN
+    `END`TAG&lt;/Point&gt;`END`PLN
+  `END`TAG&lt;/Placemark&gt;`END`PLN
+`END`TAG&lt;/kml&gt;`END

@@ -1,0 +1,40 @@
+`STR/foo/`END`PUN;`END`PLN  `END`COM// a slash starting a line treated as a regexp beginning`END`PLN
+`END`STR"foo"`END`PUN.`END`PLNmatch`END`PUN(`END`STR/fo+$/`END`PUN);`END`PLN
+`END`COM// this line comment not treated as a regular expressions`END`PLN
+`END`STR"foo /bar/"`END`PUN.`END`PLNtest`END`PUN(`END`STR/"baz"/`END`PUN);`END`PLN  `END`COM// test string and regexp boundaries`END`PLN
+`END`KWDvar`END`PLN division `END`PUN=`END`PLN `END`STR/\b\d+\/\d+/`END`PLNg`END`PUN;`END`PLN  `END`COM// test char sets and escaping of specials`END`PLN
+`END`KWDvar`END`PLN allSpecials `END`PUN=`END`PLN `END`STR/([^\(\)\[\]\{\}\-\?\+\*\.\^\$\/]+)\\/`END`PUN;`END`PLN
+`END`KWDvar`END`PLN slashInCharset `END`PUN=`END`PLN `END`STR/[^/]/`END`PLNg`END`PUN,`END`PLN notCloseSq `END`PUN=`END`PLN `END`STR/[^\]]/`END`PUN;`END`PLN
+
+`END`COM// test that slash used in numeric context treated as an operator`END`PLN
+`END`LIT1`END`PLN `END`PUN/`END`PLN `END`LIT2`END`PUN;`END`PLN
+`END`LIT1.`END`PLN `END`PUN/`END`PLN x`END`PUN;`END`PLN
+x `END`PUN/`END`PLN y`END`PUN;`END`PLN
+`END`PUN(`END`PLNx`END`PUN)`END`PLN `END`PUN/`END`PLN y`END`PUN;`END`PLN
+`END`LIT1`END`PLN `END`COM/* foo */`END`PLN `END`PUN/`END`PLN `END`LIT2`END`PUN;`END`PLN
+`END`LIT1`END`PLN `END`COM/* foo */`END`PUN/`END`PLN `END`LIT2`END`PUN;`END`PLN
+`END`LIT1`END`PUN/`END`LIT2`END`PUN;`END`PLN
+`END`LIT1.`END`PUN/`END`PLNx`END`PUN;`END`PLN
+x`END`PUN/`END`PLNy`END`PUN;`END`PLN
+`END`PUN(`END`PLNx`END`PUN)/`END`PLNy`END`PUN;`END`PLN
+
+`END`COM// test split over two lines.  line comment should not fool it`END`PLN
+`END`LIT1`END`COM//`END`PLN
+`END`PUN/`END`LIT2`END`PUN;`END`PLN
+
+x`END`PUN++/`END`PLNy`END`PUN;`END`PLN
+x`END`PUN--/`END`PLNy`END`PUN;`END`PLN
+x`END`PUN[`END`PLNy`END`PUN]`END`PLN `END`PUN/`END`PLN z`END`PUN;`END`PLN
+f`END`PUN()`END`PLN `END`PUN/`END`PLN n`END`PUN;`END`PLN
+
+`END`COM// test that slash after non postfix operator is start of regexp`END`PLN
+log`END`PUN(`END`STR'matches = '`END`PLN `END`PUN+`END`PLN `END`STR/foo/`END`PUN.`END`PLNtest`END`PUN(`END`PLNfoo`END`PUN));`END`PLN
+
+`END`COM// test keyword preceders`END`PLN
+`END`KWDreturn`END`PLN `END`STR/a regexp/`END`PUN;`END`PLN
+division `END`PUN=`END`PLN notreturn `END`PUN/`END`PLN not_a_regexp `END`PUN/`END`PLN `END`LIT2`END`PUN;`END`PLN  `END`COM// keyword suffix does not match`END`PLN
+
+`END`COM// &amp; not used as prefix operator in javascript but this should still work`END`PLN
+`END`PUN&amp;`END`STR/foo/`END`PUN;`END`PLN
+
+`END`KWDextends`END`PLN `END`PUN=`END`PLN `END`STR/extends/`END`PUN;`END

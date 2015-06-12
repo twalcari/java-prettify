@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.twalcari</groupId>
+    <artifactId>java-prettify</artifactId>
+    <packaging>jar</packaging>
+    <version>1.2.2</version>
+    <name>Java Prettify</name>
+    <description>Java Port of Google's Code Prettify</description>
+    <url>https://github.com/twalcari/java-prettify</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>twalcari</id>
+            <name>Thijs Walcarius</name>
+            <email>thijs.walcarius@intec.ugent.be</email>
+            <url>http://github.com/twalcari</url>
+            <organization>IBCN, INTEC, Ghent University - iMinds</organization>
+            <organizationUrl>http://ibcn.intec.ugent.be</organizationUrl>
+        </developer>
+        <developer>
+            <id>cws1989</id>
+            <name>Chan Wai Shing</name>
+            <email>cws1989@gmail.com</email>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <url>https://github.com/twalcari/java-prettify</url>
+        <connection>scm:git:git://github.com/twalcari/java-prettify.git</connection>
+        <developerConnection>scm:git:git@github.com:twalcari/java-prettify.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/twalcari/java-prettify/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+
+</project>

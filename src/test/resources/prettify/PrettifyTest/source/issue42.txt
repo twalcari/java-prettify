@@ -1,0 +1,39 @@
+; -*- mode: lisp -*-
+
+(defun back-six-lines () (interactive) (forward-line -6))
+(defun forward-six-lines () (interactive) (forward-line 6))
+
+(global-set-key "\M-l" 'goto-line)
+(global-set-key "\C-z" 'advertised-undo)
+(global-set-key [C-insert] 'clipboard-kill-ring-save)
+(global-set-key [S-insert] 'clipboard-yank)
+(global-set-key [C-up] 'back-six-lines)
+(global-set-key [C-down] 'forward-six-lines)
+
+(setq visible-bell t)
+(setq user-mail-address "foo@bar.com")
+(setq default-major-mode 'text-mode)
+
+(setenv "TERM" "emacs")
+(c-set-offset 'case-label 2)
+(setq c-basic-offset 2)
+(setq perl-indent-level 0x2)
+(setq delete-key-deletes-forward t)
+(setq indent-tabs-mode nil)
+
+;; Text mode
+(add-hook 'text-mode-hook 
+  '(lambda ()
+     (turn-on-auto-fill)
+   )
+)
+
+;; Fundamental mode
+(add-hook 'fundamental-mode-hook 
+  '(lambda ()
+     (turn-on-auto-fill)
+   )
+)
+
+;; Define and cond are keywords in scheme
+(define (sqt x) (sqrt-iter 1.0 2.0 x))

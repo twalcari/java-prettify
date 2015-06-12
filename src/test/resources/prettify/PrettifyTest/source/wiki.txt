@@ -1,0 +1,23 @@
+#summary hello world
+#labels HelloWorld WikiWord Hiya
+
+[http://www.google.com/?q=WikiSyntax+site:code.google.com WikiSyntax]
+
+Lorem Ipsum `while (1) print("blah blah");`
+
+   * Bullet
+   * Points
+      * NestedBullet
+
+==DroningOnAndOn==
+{{{
+  // Some EmbeddedSourceCode
+  void main() {
+    Print('hello world');
+  }
+}}}
+
+{{{
+  <!-- Embedded XML -->
+  <foo bar="baz"><boo /><foo>
+}}}

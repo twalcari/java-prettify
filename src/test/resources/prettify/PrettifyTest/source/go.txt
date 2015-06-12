@@ -1,0 +1,11 @@
+package main  /* Package of which this program is part. */
+
+import fmt "fmt"  // Package implementing formatted I/O.
+
+
+func main() {
+    fmt.Printf("Hello, world; or Καλημέρα κόσμε; or こんにちは 世界\n")  // Semicolon inserted here
+}
+
+/* " */  "foo /* "  /*/  */
+/* ` */  `foo /* `  /*/  */

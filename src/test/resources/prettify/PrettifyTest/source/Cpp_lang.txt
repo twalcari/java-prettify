@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+//! fibonacci numbers with gratuitous use of templates.
+//! \param n an index into the fibonacci series
+//! \param fib0 element 0 of the series
+//! \return the nth element of the fibonacci series
+template <class T>
+T fib(int n, const T& fib0) {
+  T a(fib0), b(fib0);
+  while (--n >= 0) {
+    T tmp(a);
+    a += b;
+    b = tmp;
+  }
+  return a;
+}
+
+int main(int argc, char **argv) {
+  cout << fib(10, 1U);
+}

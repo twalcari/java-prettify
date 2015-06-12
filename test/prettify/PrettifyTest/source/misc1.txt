@@ -1,2 +1,0 @@
-// ends with line comment token
-//

@@ -1,4 +1,0 @@
-// The normal string syntax
-string a = "C:\\";
-// is equivalent to a verbatim string
-string b = @"C:\";
