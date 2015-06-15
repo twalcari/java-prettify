@@ -1,0 +1,16 @@
+/* SPAN elements with the classes below are added by prettyprint. */
+.pln { -fx-fill: #000 }  /* plain text */
+
+.str { -fx-fill: #080 }  /* string content */
+.kwd { -fx-fill: #008 }  /* a keyword */
+.com { -fx-fill: #800 }  /* a comment */
+.typ { -fx-fill: #606 }  /* a type name */
+.lit { -fx-fill: #066 }  /* a literal value */
+/* punctuation, lisp open bracket, lisp close bracket */
+.pun, .opn, .clo { -fx-fill: #660 }
+.tag { -fx-fill: #008 }  /* a markup tag name */
+.atn { -fx-fill: #606 }  /* a markup attribute name */
+.atv { -fx-fill: #080 }  /* a markup attribute value */
+.dec, .var { -fx-fill: #606 }  /* a declaration; a variable name */
+.fun { -fx-fill: red }  /* a function name */
+
