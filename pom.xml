@@ -4,7 +4,7 @@
     <groupId>com.github.twalcari</groupId>
     <artifactId>java-prettify</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <name>Java Prettify</name>
     <description>Java Port of Google's Code Prettify</description>
     <url>https://github.com/twalcari/java-prettify</url>
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.fxmisc.richtext</groupId>
             <artifactId>richtextfx</artifactId>
-            <version>0.6.4</version>
+            <version>0.6.10</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
