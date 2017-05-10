@@ -13,43 +13,13 @@
 // limitations under the License.
 package prettify.parser;
 
-import prettify.lang.Lang;
+import prettify.lang.*;
+
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import prettify.lang.LangAppollo;
-import prettify.lang.LangBasic;
-import prettify.lang.LangClj;
-import prettify.lang.LangCss;
-import prettify.lang.LangDart;
-import prettify.lang.LangErlang;
-import prettify.lang.LangGo;
-import prettify.lang.LangHs;
-import prettify.lang.LangLisp;
-import prettify.lang.LangLlvm;
-import prettify.lang.LangLua;
-import prettify.lang.LangMatlab;
-import prettify.lang.LangMl;
-import prettify.lang.LangMumps;
-import prettify.lang.LangN;
-import prettify.lang.LangPascal;
-import prettify.lang.LangR;
-import prettify.lang.LangRd;
-import prettify.lang.LangScala;
-import prettify.lang.LangSql;
-import prettify.lang.LangTcl;
-import prettify.lang.LangTex;
-import prettify.lang.LangVb;
-import prettify.lang.LangVhdl;
-import prettify.lang.LangWiki;
-import prettify.lang.LangXq;
-import prettify.lang.LangYaml;
 
 /**
  * This is similar to the prettify.js in JavaScript Prettify.
@@ -441,13 +411,13 @@ public class Prettify {
      * The text before and after group 1 will be restyled using this decorator
      * so decorators should take care that this doesn't result in infinite
      * recursion.  For example, the HTML lexer rule for SCRIPT elements looks
-     * something like ['lang-js', /<[s]cript>(.+?)<\/script>/].  This may match
-     * '<script>foo()<\/script>', which would cause the current decorator to
-     * be called with '<script>' which would not match the same rule since
+     * something like ['lang-js', /&lt;[s]cript&gt;(.+?)&lt;\/script&gt;/].  This may match
+     * '&lt;script&gt;foo()<\/script&gt;', which would cause the current decorator to
+     * be called with '&lt;script&gt;' which would not match the same rule since
      * group 1 must not be empty, so it would be instead styled as PR_TAG by
      * the generic tag rule.  The handler registered for the 'js' extension would
      * then be called with 'foo()', and finally, the current decorator would
-     * be called with '<\/script>' which would not match the original rule and
+     * be called with '&lt;\/script&gt;' which would not match the original rule and
      * so the generic tag rule would identify it as a tag.
      *
      * Pattern must only match prefixes, and if it matches a prefix, then that

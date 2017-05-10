@@ -36,8 +36,17 @@ public class RTSyntaxHighlighter {
     public void computeAndApplyHighlighting(String text) {
         List<ParseResult> parseResults = prettifyParser.parse(inputType, text);
 
-        for (ParseResult parseResult : parseResults) {
-            textArea.setStyle(parseResult.getOffset(), parseResult.getOffset() + parseResult.getLength(), parseResult.getStyleKeys());
+        try {
+            for (ParseResult parseResult : parseResults) {
+                textArea.setStyle(parseResult.getOffset(), parseResult.getOffset() + parseResult.getLength(), parseResult.getStyleKeys());
+            }
+        } catch (IllegalArgumentException ignored) {
+            /*
+            When the text has already changed by the time we apply the style,
+            an  "IllegalArgumentException: end is greater than length" can occur.
+
+            Fail fast in that case.
+            */
         }
     }
 }

@@ -19,11 +19,12 @@
 // THE SOFTWARE.
 package prettify.lang;
 
+import prettify.parser.Prettify;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import prettify.parser.Prettify;
 
 /**
  * This is similar to the lang-ml.js in JavaScript Prettify.
@@ -36,7 +37,7 @@ import prettify.parser.Prettify;
  * code inside an HTML tag like <pre class="prettyprint lang-matlab">
  * </pre>
  *
- * @see https://github.com/amroamroamro/prettify-matlab
+ * @see <a href="https://github.com/amroamroamro/prettify-matlab">https://github.com/amroamroamro/prettify-matlab</a>
  */
 public class LangMatlab extends Lang {
 

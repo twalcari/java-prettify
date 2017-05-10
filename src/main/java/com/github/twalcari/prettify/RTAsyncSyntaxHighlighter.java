@@ -47,12 +47,20 @@ public class RTAsyncSyntaxHighlighter {
             applyHighlighting(computeHighlightingAsync().get());
         } catch (InterruptedException | ExecutionException ignored) {
         }
-
     }
 
     private void applyHighlighting(List<ParseResult> parseResults) {
-        for (ParseResult parseResult : parseResults) {
-            textArea.setStyle(parseResult.getOffset(), parseResult.getOffset() +  parseResult.getLength(), parseResult.getStyleKeys());
+        try {
+            for (ParseResult parseResult : parseResults) {
+                textArea.setStyle(parseResult.getOffset(), parseResult.getOffset() + parseResult.getLength(), parseResult.getStyleKeys());
+            }
+        } catch (IllegalArgumentException ignored) {
+            /*
+            When the text has already changed by the time we apply the style,
+            an  "IllegalArgumentException: end is greater than length" can occur.
+
+            Fail fast in that case.
+            */
         }
     }
 
@@ -70,7 +78,7 @@ public class RTAsyncSyntaxHighlighter {
         return task;
     }
 
-    public void stop(){
+    public void stop() {
         executor.shutdown();
     }
 
