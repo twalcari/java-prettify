@@ -268,7 +268,7 @@ public class Prettify {
       decorateSourceMap.put("keywords", SH_KEYWORDS);
       decorateSourceMap.put("hashComments", true);
       decorateSourceMap.put("multiLineStrings", true);
-      registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"bash", "bsh", "csh", "sh"}));
+      registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"bash", "bsh", "csh", "ebuild", "eclass", "sh"}));
 
       decorateSourceMap = new HashMap<String, Object>();
       decorateSourceMap.put("keywords", PYTHON_KEYWORDS);
