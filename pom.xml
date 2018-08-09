@@ -4,7 +4,7 @@
     <groupId>com.github.twalcari</groupId>
     <artifactId>syntaxhighlighterfx</artifactId>
     <packaging>jar</packaging>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
     <name>Syntax Highlighter for JavaFX</name>
     <description>Synchronous or asynchronous syntax highlighter for RichTextFX StyleClassedTextArea</description>
     <url>https://github.com/twalcari/syntaxhighlighterfx</url>
