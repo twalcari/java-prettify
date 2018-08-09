@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.twalcari</groupId>
-    <artifactId>java-prettify</artifactId>
+    <artifactId>syntaxhighlighterfx</artifactId>
     <packaging>jar</packaging>
     <version>3.0.0-SNAPSHOT</version>
-    <name>Java Prettify</name>
-    <description>Java Port of Google's Code Prettify</description>
-    <url>https://github.com/twalcari/java-prettify</url>
+    <name>Syntax Highlighter for JavaFX</name>
+    <description>Synchronous or asynchronous syntax highlighter for RichTextFX StyleClassedTextArea</description>
+    <url>https://github.com/twalcari/syntaxhighlighterfx</url>
 
     <licenses>
         <license>
@@ -22,10 +22,10 @@
         <developer>
             <id>twalcari</id>
             <name>Thijs Walcarius</name>
-            <email>thijs.walcarius@intec.ugent.be</email>
+            <email>thijs.walcarius@ugent.be</email>
             <url>http://github.com/twalcari</url>
-            <organization>IBCN, INTEC, Ghent University - iMinds</organization>
-            <organizationUrl>http://ibcn.intec.ugent.be</organizationUrl>
+            <organization>imec - IDLab, Department of Information Technology at Ghent University</organization>
+            <organizationUrl>http://idlab.ugent.be</organizationUrl>
         </developer>
         <developer>
             <id>cws1989</id>
@@ -75,12 +75,12 @@
     </dependencies>
 
     <scm>
-        <url>https://github.com/twalcari/java-prettify</url>
-        <connection>scm:git:git://github.com/twalcari/java-prettify.git</connection>
-        <developerConnection>scm:git:git@github.com:twalcari/java-prettify.git</developerConnection>
+        <url>https://github.com/twalcari/syntaxhighlighterfx</url>
+        <connection>scm:git:git://github.com/twalcari/syntaxhighlighterfx.git</connection>
+        <developerConnection>scm:git:git@github.com:twalcari/syntaxhighlighterfx.git</developerConnection>
     </scm>
     <issueManagement>
-        <url>https://github.com/twalcari/java-prettify/issues</url>
+        <url>https://github.com/twalcari/syntaxhighlighterfx/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
