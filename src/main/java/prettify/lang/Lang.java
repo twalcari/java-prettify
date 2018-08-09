@@ -25,11 +25,11 @@ import java.util.List;
 public abstract class Lang {
 
   /**
-   * Similar to those in JavaScript prettify.js.
+   * Similar to those in JavaScript syntaxhighlighterfx.js.
    */
   protected List<List<Object>> shortcutStylePatterns;
   /**
-   * Similar to those in JavaScript prettify.js.
+   * Similar to those in JavaScript syntaxhighlighterfx.js.
    */
   protected List<List<Object>> fallthroughStylePatterns;
   /**
@@ -49,7 +49,7 @@ public abstract class Lang {
   /**
    * This method should be overridden by the child class.
    * This provide the file extensions list to help the parser to determine which 
-   * {@link Lang} to use. See JavaScript prettify.js.
+   * {@link Lang} to use. See JavaScript syntaxhighlighterfx.js.
    * 
    * @return the list of file extensions
    */

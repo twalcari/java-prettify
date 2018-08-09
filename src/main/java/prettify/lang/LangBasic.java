@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 /**
  * This is similar to the lang-basic.js in JavaScript Prettify.
  * <p/>
- * To use, include prettify.js and this file in your HTML page.
+ * To use, include syntaxhighlighterfx.js and this file in your HTML page.
  * Then put your code in an HTML tag like
  * <pre class="prettyprint lang-basic">(my BASIC code)</pre>
  *

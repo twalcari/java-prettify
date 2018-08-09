@@ -10,13 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * The prettify parser for syntax highlight.
+ * The syntaxhighlighterfx parser for syntax highlight.
  * @author Chan Wai Shing <cws1989@gmail.com>
  */
 public class PrettifyParser implements Parser {
 
   /**
-   * The prettify parser.
+   * The syntaxhighlighterfx parser.
    */
   protected Prettify prettify;
 

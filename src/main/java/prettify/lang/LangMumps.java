@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * All comments are adapted from the JavaScript Prettify.
  * <p/>
  * <p/>
- * To use, include prettify.js and this file in your HTML page.
+ * To use, include syntaxhighlighterfx.js and this file in your HTML page.
  * Then put your code in an HTML tag like
  * <pre class="prettyprint lang-mumps">(my SQL code)</pre>
  * <p/>

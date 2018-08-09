@@ -1,4 +1,4 @@
-package com.github.twalcari.prettify;
+package com.github.twalcari.syntaxhighlighterfx;
 /**
  * User: twalcari
  * Date: 6/12/2015

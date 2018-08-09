@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.twalcari</groupId>
-    <artifactId>java-prettify</artifactId>
+    <artifactId>syntaxhighlighterfx</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.3</version>
-    <name>Java Prettify</name>
-    <description>Java Port of Google's Code Prettify</description>
-    <url>https://github.com/twalcari/java-prettify</url>
+    <version>3.0.0</version>
+    <name>Syntax Highlighter for JavaFX</name>
+    <description>Synchronous or asynchronous syntax highlighter for RichTextFX StyleClassedTextArea</description>
+    <url>https://github.com/twalcari/syntaxhighlighterfx</url>
 
     <licenses>
         <license>
@@ -22,10 +22,10 @@
         <developer>
             <id>twalcari</id>
             <name>Thijs Walcarius</name>
-            <email>thijs.walcarius@intec.ugent.be</email>
+            <email>thijs.walcarius@ugent.be</email>
             <url>http://github.com/twalcari</url>
-            <organization>IBCN, INTEC, Ghent University - iMinds</organization>
-            <organizationUrl>http://ibcn.intec.ugent.be</organizationUrl>
+            <organization>imec - IDLab, Department of Information Technology at Ghent University</organization>
+            <organizationUrl>http://idlab.ugent.be</organizationUrl>
         </developer>
         <developer>
             <id>cws1989</id>
@@ -39,10 +39,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.10.0</version>
+                <configuration>
                 </configuration>
             </plugin>
         </plugins>
@@ -58,22 +65,22 @@
         <dependency>
             <groupId>org.fxmisc.richtext</groupId>
             <artifactId>richtextfx</artifactId>
-            <version>0.6.10</version>
+            <version>0.9.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 
     <scm>
-        <url>https://github.com/twalcari/java-prettify</url>
-        <connection>scm:git:git://github.com/twalcari/java-prettify.git</connection>
-        <developerConnection>scm:git:git@github.com:twalcari/java-prettify.git</developerConnection>
+        <url>https://github.com/twalcari/syntaxhighlighterfx</url>
+        <connection>scm:git:git://github.com/twalcari/syntaxhighlighterfx.git</connection>
+        <developerConnection>scm:git:git@github.com:twalcari/syntaxhighlighterfx.git</developerConnection>
     </scm>
     <issueManagement>
-        <url>https://github.com/twalcari/java-prettify/issues</url>
+        <url>https://github.com/twalcari/syntaxhighlighterfx/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
@@ -102,7 +109,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -131,7 +138,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

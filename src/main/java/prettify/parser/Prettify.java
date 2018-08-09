@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
- * This is similar to the prettify.js in JavaScript Prettify.
+ * This is similar to the syntaxhighlighterfx.js in JavaScript Prettify.
  * 
  * All comments are adapted from the JavaScript Prettify.
  * 
@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  * <p>
  * Usage: <ol>
  * <li> include this source file in an html page via
- *   {@code <script type="text/javascript" src="/path/to/prettify.js"></script>}
+ *   {@code <script type="text/javascript" src="/path/to/syntaxhighlighterfx.js"></script>}
  * <li> define style rules.  See the example page for examples.
  * <li> mark the {@code <pre>} and {@code <code>} tags in your source with
  *    {@code class=prettyprint.}
@@ -268,7 +268,7 @@ public class Prettify {
       decorateSourceMap.put("keywords", SH_KEYWORDS);
       decorateSourceMap.put("hashComments", true);
       decorateSourceMap.put("multiLineStrings", true);
-      registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"bash", "bsh", "csh", "sh"}));
+      registerLangHandler(sourceDecorator(decorateSourceMap), Arrays.asList(new String[]{"bash", "bsh", "csh", "sh", "ebuild", "eclass"}));
 
       decorateSourceMap = new HashMap<String, Object>();
       decorateSourceMap.put("keywords", PYTHON_KEYWORDS);
@@ -823,7 +823,7 @@ public class Prettify {
 
   protected List<String> getFileExtensionsFromClass(Class<? extends Lang> clazz) throws Exception {
     Method getExtensionsMethod = clazz.getMethod("getFileExtensions", (Class<?>[]) null);
-    return (List<String>) getExtensionsMethod.invoke(null, null);
+    return (List<String>) getExtensionsMethod.invoke(null, new Object[]{});
   }
 
   /**

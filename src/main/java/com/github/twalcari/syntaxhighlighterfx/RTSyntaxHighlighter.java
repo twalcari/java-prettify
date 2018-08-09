@@ -1,4 +1,4 @@
-package com.github.twalcari.prettify;
+package com.github.twalcari.syntaxhighlighterfx;
 
 import javafx.application.Platform;
 import org.fxmisc.richtext.StyleClassedTextArea;

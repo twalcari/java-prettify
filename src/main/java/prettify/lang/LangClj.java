@@ -30,7 +30,7 @@ import prettify.parser.Prettify;
  * Registers a language handler for Clojure.
  *
  *
- * To use, include prettify.js and this file in your HTML page.
+ * To use, include syntaxhighlighterfx.js and this file in your HTML page.
  * Then put your code in an HTML tag like
  *      <pre class="prettyprint lang-lisp">(my lisp code)</pre>
  * The lang-cl class identifies the language as common lisp.
