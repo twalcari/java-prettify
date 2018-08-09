@@ -1,8 +1,8 @@
-package com.github.twalcari.prettify;
+package com.github.twalcari.syntaxhighlighterfx;
 
 import javafx.concurrent.Task;
-import org.fxmisc.richtext.PlainTextChange;
 import org.fxmisc.richtext.StyleClassedTextArea;
+import org.fxmisc.richtext.model.PlainTextChange;
 import org.reactfx.EventStream;
 import org.reactfx.util.Try;
 import prettify.PrettifyParser;

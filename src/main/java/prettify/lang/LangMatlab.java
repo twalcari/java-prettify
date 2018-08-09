@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
  *
  * <p> 0 Registers a language handler for MATLAB.
  *
- * To use, include prettify.js and this file in your HTML page. Then put your
+ * To use, include syntaxhighlighterfx.js and this file in your HTML page. Then put your
  * code inside an HTML tag like <pre class="prettyprint lang-matlab">
  * </pre>
  *

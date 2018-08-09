@@ -28,7 +28,7 @@ import prettify.parser.Prettify;
  * https://gist.github.com/ndabas/2850418
  *
  *
- * To use, include prettify.js and this file in your HTML page. Then put your
+ * To use, include syntaxhighlighterfx.js and this file in your HTML page. Then put your
  * code in an HTML tag like <pre class="prettyprint lang-llvm">(my LLVM code)</pre>
  *
  *
