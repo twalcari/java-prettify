@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.fxmisc.richtext</groupId>
             <artifactId>richtextfx</artifactId>
-            <version>0.9.1</version>
+            <version>0.10.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
